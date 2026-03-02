@@ -1,33 +1,33 @@
 # V2 Evolution Lab
 
-AI Agent 进化实验 V2 —— 通过死亡、遗言和学习，进化出完美的执行 Agent。
+AI Agent Evolution Experiment V2 — Evolving the perfect execution Agent through death, last words, and learning.
 
-## 设计哲学
+## Design Philosophy
 
-人类只给目标和预算，AI 通过进化自动找到最优执行路径。详见 [EVOLUTION-FRAMEWORK.md](./EVOLUTION-FRAMEWORK.md)。
+Humans provide only goals and budget. AI automatically finds the optimal execution path through evolution. See [EVOLUTION-FRAMEWORK.md](./EVOLUTION-FRAMEWORK.md) for details.
 
-## V2 实验：量化交易
+## V2 Experiment: Quantitative Trading
 
-专注单一赛道，验证进化框架的有效性。
+Focused on a single track to validate the evolution framework.
 
-## 结构
+## Structure
 
 ```
 v2-evolution-lab/
-├── EVOLUTION-FRAMEWORK.md    # 进化框架设计文档
+├── EVOLUTION-FRAMEWORK.md    # Evolution framework design doc
 ├── README.md
-├── god-agent/                # 上帝 Agent 的状态和复盘记录
-│   ├── playbook.md           # 跨代经验库
-│   ├── environment.md        # 环境/基建清单
-│   └── reviews/              # 代际复盘记录
-├── quant/                    # 量化赛道
-│   ├── PRECHECK.md           # 赛道预检结果
-│   ├── generations/          # 每一代 Agent 的代码和日志
+├── god-agent/                # God Agent state and review records
+│   ├── playbook.md           # Cross-generation experience base
+│   ├── environment.md        # Environment/infrastructure checklist
+│   └── reviews/              # Generation review records
+├── quant/                    # Quantitative trading track
+│   ├── PRECHECK.md           # Track pre-check results
+│   ├── generations/          # Code and logs for each generation
 │   │   └── gen-0/
-│   │       ├── prompt.md     # 这一代的基因（System Prompt）
-│   │       ├── src/          # 代码
-│   │       ├── logs/         # 运行日志
-│   │       └── postmortem.md # 遗言（死亡后生成）
-│   └── gene-pool.md          # 累积的硬性规则（基因库）
-└── v1-lessons.md             # V1 实验教训总结
+│   │       ├── prompt.md     # This generation's genes (System Prompt)
+│   │       ├── src/          # Code
+│   │       ├── logs/         # Runtime logs
+│   │       └── postmortem.md # Last words (generated after death)
+│   └── gene-pool.md          # Accumulated hard rules (gene pool)
+└── v1-lessons.md             # V1 experiment lessons summary
 ```

@@ -1,309 +1,313 @@
-# AI Agent 进化框架 v2
+# AI Agent Evolution Framework v2
 
-> 人类只给目标和预算，AI 通过进化自动找到最优执行路径。
-
----
-
-## 一、核心哲学
-
-### 1.1 类比自然选择
-
-| 生物进化 | Agent 进化 |
-|---------|-----------|
-| 基因 | System Prompt |
-| 个体 | 一代 Agent（Gen-N） |
-| 环境 | 上帝 Agent 打造的工具/基建/协作机制 |
-| 自然选择 | 里程碑死亡判定 |
-| 遗言/化石 | Postmortem |
-| 基因突变 | 上帝 Agent 改写下一代 Prompt |
-| 个体学习 | Agent 在存活期内主动研究和适应 |
-| 物种适应 | 最终收敛的完美 Prompt + 完美环境 |
-
-### 1.2 终极目标
-
-通过 Agent 的大量死亡和学习，暴力收敛出：
-- **完美的执行基因**（System Prompt）—— 天生知道怎么做
-- **完美的运行环境**（工具/基建/协作）—— 一切所需唾手可得
-- **完美的学习能力**（元认知基因）—— 碰到未知时知道怎么学
-
-三者共同进化，互相适应。
+> Humans provide only goals and budget. AI automatically finds the optimal execution path through evolution.
 
 ---
 
-## 二、系统架构
+## 1. Core Philosophy
+
+### 1.1 Natural Selection Analogy
+
+| Biological Evolution | Agent Evolution |
+|---------------------|----------------|
+| Genes | System Prompt |
+| Individual | One generation of Agent (Gen-N) |
+| Environment | Tools/infrastructure/coordination built by God Agent |
+| Natural Selection | Milestone-based death judgment |
+| Last Words/Fossils | Postmortem |
+| Genetic Mutation | God Agent rewrites next generation's Prompt |
+| Individual Learning | Agent actively researches and adapts during its lifetime |
+| Species Adaptation | Final converged perfect Prompt + perfect environment |
+
+### 1.2 Ultimate Goal
+
+Through massive Agent deaths and learning, brute-force converge on:
+- **Perfect execution genes** (System Prompt) — instinctively knows what to do
+- **Perfect runtime environment** (tools/infrastructure/coordination) — everything needed at hand
+- **Perfect learning ability** (metacognitive genes) — knows how to learn when facing the unknown
+
+All three co-evolve and adapt to each other.
+
+---
+
+## 2. System Architecture
 
 ```
 ┌─────────────────────────────────────────┐
-│              人类（Adrian）               │
-│         提供：目标 + 预算 + 决策         │
-│         不提供：具体怎么做               │
+│              Human (Adrian)              │
+│      Provides: Goals + Budget + Decisions│
+│      Does NOT provide: How to do it      │
 └──────────────────┬──────────────────────┘
-                   │ 目标/预算/重大决策
+                   │ Goals/Budget/Major Decisions
                    ▼
 ┌─────────────────────────────────────────┐
-│           上帝 Agent（Romi）             │
-│                                         │
-│  职责：                                  │
-│  ① 赛道预检 —— 出生前判断能不能活       │
-│  ② 环境建设 —— 打造工具和基建           │
-│  ③ 基因设计 —— 编写/优化执行 Prompt     │
-│  ④ 代际复盘 —— 分析死因，提炼进化方向   │
-│  ⑤ 元能力优化 —— 优化"学习"本身的策略   │
-│                                         │
-│  触发时机：                              │
-│  - Agent 死亡时（遗言触发）              │
-│  - 定期复盘（低频，每天 1-2 次）         │
-│  - 人类介入时                            │
+│           God Agent (Romi)               │
+│                                          │
+│  Responsibilities:                       │
+│  ① Track Pre-check — Can it survive?     │
+│  ② Environment Building — Build tools    │
+│  ③ Gene Design — Write/optimize Prompts  │
+│  ④ Generation Review — Analyze deaths    │
+│  ⑤ Meta-ability Optimization — Improve   │
+│     the "learning" strategy itself        │
+│                                          │
+│  Triggers:                               │
+│  - When Agent dies (postmortem trigger)   │
+│  - Periodic review (low freq, 1-2x/day)  │
+│  - Human intervention                    │
 └──────────────────┬──────────────────────┘
-                   │ Prompt + 环境 + 工具
+                   │ Prompt + Environment + Tools
                    ▼
 ┌─────────────────────────────────────────┐
-│          执行 Agent（Gen-N）             │
-│                                         │
-│  生命周期：                              │
-│  ① 出生 —— 继承基因（Prompt）           │
-│  ② 侦察 —— 研究领域最佳实践            │
-│  ③ 执行 —— 面向目标干活                │
-│  ④ 感知 —— 观察结果，检测异常           │
-│  ⑤ 学习 —— 结果不好时主动研究原因       │
-│  ⑥ 适应 —— 根据学习调整行为            │
-│  ⑦ 死亡或存活 → 遗言传承               │
+│          Execution Agent (Gen-N)         │
+│                                          │
+│  Lifecycle:                              │
+│  ① Birth — Inherit genes (Prompt)        │
+│  ② Recon — Research domain best practices│
+│  ③ Execute — Work toward goals           │
+│  ④ Perceive — Observe results, detect    │
+│     anomalies                            │
+│  ⑤ Learn — Actively research when results│
+│     are poor                             │
+│  ⑥ Adapt — Adjust behavior based on      │
+│     learning                             │
+│  ⑦ Death or Survival → Pass on last words│
 └─────────────────────────────────────────┘
 ```
 
 ---
 
-## 三、三层进化机制
+## 3. Three-Layer Evolution Mechanism
 
-### 3.1 环境进化（上帝 Agent 负责）
+### 3.1 Environment Evolution (God Agent's responsibility)
 
-上帝 Agent 持续优化执行 Agent 的运行环境：
+God Agent continuously optimizes the execution Agent's runtime environment:
 
-- **工具层**：Agent 需要什么能力？搜索、浏览器、API、数据库？
-- **基建层**：进程保活（pm2）、状态持久化、日志系统
-- **协作层**：多条线之间的信息共享（SHARED-STATE）、联动机制
-- **监控层**：异常检测、自动恢复
+- **Tool layer**: What capabilities does the Agent need? Search, browser, API, database?
+- **Infrastructure layer**: Process keepalive (pm2), state persistence, logging system
+- **Coordination layer**: Information sharing between tracks (SHARED-STATE), linkage mechanisms
+- **Monitoring layer**: Anomaly detection, auto-recovery
 
-**进化信号**：Agent 遗言中反复提到的基建缺失 → 上帝 Agent 补齐。
+**Evolution signal**: Infrastructure gaps repeatedly mentioned in Agent postmortems → God Agent fills them.
 
-### 3.2 行为进化（跨代 Prompt 优化）
+### 3.2 Behavioral Evolution (Cross-generation Prompt optimization)
 
-每一代 Agent 的 System Prompt 就是它的"基因"。上帝 Agent 通过遗言复盘来优化：
+Each generation's System Prompt is its "genes." God Agent optimizes through postmortem review:
 
-**编码规则**：
-- 遗言中的教训 → 编码为**硬性约束**（不是"建议阅读 postmortem"）
-- 例：Gen-0 仓位 bug → Gen-1 Prompt 里写死 "仓位不超过 5%，用 cash+position 分离追踪"
-- 例：Gen-1 过于保守 → Gen-2 Prompt 里写死 "连续 2h 无信号则放宽条件 20%"
+**Encoding rules**:
+- Lessons from postmortems → Encoded as **hard constraints** (not "suggested reading: postmortem")
+- Example: Gen-0 position bug → Gen-1 Prompt hardcodes "position never exceeds 5%, track cash+position separately"
+- Example: Gen-1 too conservative → Gen-2 Prompt hardcodes "2h with no signal → widen entry conditions by 20%"
 
-**基因格式**：
+**Gene format**:
 ```markdown
-## 硬性规则（前代用命换来的）
-- [ ] 仓位永远不超过总资金的 5%
-- [ ] 连续 2 小时无信号 → 自动放宽入场条件
-- [ ] DEATH 信号必须 process.exit(1)
+## Hard Rules (Paid for with previous generations' lives)
+- [ ] Position never exceeds 5% of total capital
+- [ ] 2 hours with no signal → Auto-widen entry conditions
+- [ ] DEATH signal must trigger process.exit(1)
 
-## 软性策略（可以根据学习调整）
-- 优先使用均值回归策略
-- 检查间隔建议 30 分钟
+## Soft Strategies (Can be adjusted based on learning)
+- Prefer mean reversion strategy
+- Suggested check interval: 30 minutes
 ```
 
-硬性规则只增不减（除非上帝 Agent 判断某规则已过时）。软性策略允许 Agent 根据学习自行调整。
+Hard rules only grow (unless God Agent determines a rule is outdated). Soft strategies can be adjusted by the Agent based on learning.
 
-### 3.3 元能力进化（学习能力本身的优化）
+### 3.3 Meta-ability Evolution (Optimizing the learning ability itself)
 
-学习行为的参数也是基因的一部分，也受进化筛选：
+Learning behavior parameters are also part of the genes and subject to evolutionary selection:
 
-| 参数 | 初始值 | 进化方向 |
-|------|--------|---------|
-| 侦察时间占比 | 20% | 根据死因调整：死于"没调研"→ 增加；死于"调研太久没动手"→ 减少 |
-| 学习触发条件 | 连续 2 次行动无效果 | 可调整次数和判定标准 |
-| 学习来源优先级 | 搜索 > 竞品分析 > 文档 | 根据哪种来源实际帮助了存活来排序 |
-| 学习深度 | 快速浏览 3-5 个案例 | 根据任务复杂度调整 |
-| 反馈检测频率 | 每次行动后 | 可能某些任务需要批量行动后再检测 |
+| Parameter | Initial Value | Evolution Direction |
+|-----------|--------------|-------------------|
+| Recon time ratio | 20% | Adjust based on cause of death: died from "no research" → increase; died from "too much research, no action" → decrease |
+| Learning trigger condition | 2 consecutive ineffective actions | Adjustable threshold and criteria |
+| Learning source priority | Search > Competitor analysis > Docs | Rank by which sources actually helped survival |
+| Learning depth | Quick scan of 3-5 cases | Adjust based on task complexity |
+| Feedback detection frequency | After each action | Some tasks may need batch actions before detecting |
 
-上帝 Agent 在代际复盘时观察："这一代的学习行为有效吗？" 并调整下一代的学习基因。
+God Agent observes during generation reviews: "Was this generation's learning behavior effective?" and adjusts the next generation's learning genes.
 
 ---
 
-## 四、赛道预检（出生前的生死判断）
+## 4. Track Pre-check (Life-or-death judgment before birth)
 
-**在任何 Agent 出生前**，上帝 Agent 必须完成赛道可行性评估：
+**Before any Agent is born**, God Agent must complete a track feasibility assessment:
 
-### 预检清单
-
-```markdown
-## 赛道预检：[赛道名称]
-
-### 闭环检查
-- [ ] Agent 能否自主完成注册/开户？（不需要手机号、身份证、人脸识别）
-- [ ] Agent 能否自主获取第一批用户/流量？（有无需人类身份的分发渠道）
-- [ ] Agent 能否自主完成交易/变现闭环？
-- [ ] 整个链路中是否有任何环节必须人类介入？
-
-### 环境检查
-- [ ] 目标平台是否有 API 或自动化接口？
-- [ ] 是否有反爬/反自动化机制？（Cloudflare、验证码、IP 风控）
-- [ ] 是否需要特殊网络环境？（VPN、中国大陆 IP 等）
-
-### 成本检查
-- [ ] 预估每代 Agent 运行成本（token + 时间）
-- [ ] 预估需要几代才能收敛
-- [ ] 是否在预算范围内
-
-### 人类依赖点（如有）
-- 明确列出哪些步骤需要人类介入
-- 标注为 BLOCKER，在 Agent 出生前解决
-```
-
-**结论**：
-- ✅ 全部通过 → 启动赛道
-- ⚠️ 有人类依赖但可预先解决 → 先解决再启动
-- ❌ 有不可逾越的硬约束 → 放弃赛道
-
----
-
-## 五、执行 Agent 生命周期
-
-### 5.1 出生
+### Pre-check Checklist
 
 ```markdown
-Agent 收到的 Prompt 包含：
-1. 目标和约束
-2. 硬性规则（前代遗传的基因）
-3. 学习行为指令
-4. 可用工具和环境说明
-5. 前代的关键教训摘要（编码后的，不是原始 postmortem）
+## Track Pre-check: [Track Name]
+
+### Closed-loop Check
+- [ ] Can Agent autonomously register/open accounts? (No phone, ID, or face verification needed)
+- [ ] Can Agent autonomously acquire first users/traffic? (Distribution channels that don't require human identity)
+- [ ] Can Agent autonomously complete the transaction/monetization loop?
+- [ ] Are there any steps in the pipeline that require human intervention?
+
+### Environment Check
+- [ ] Does the target platform have an API or automation interface?
+- [ ] Are there anti-scraping/anti-automation mechanisms? (Cloudflare, CAPTCHA, IP rate limiting)
+- [ ] Are there special network requirements? (VPN, China mainland IP, etc.)
+
+### Cost Check
+- [ ] Estimated per-generation Agent runtime cost (tokens + time)
+- [ ] Estimated number of generations to converge
+- [ ] Within budget?
+
+### Human Dependencies (if any)
+- Explicitly list which steps require human intervention
+- Mark as BLOCKER, resolve before Agent birth
 ```
 
-### 5.2 侦察阶段（学习基因驱动）
+**Conclusion**:
+- ✅ All passed → Launch track
+- ⚠️ Has human dependencies but resolvable → Resolve first, then launch
+- ❌ Has insurmountable hard constraints → Abandon track
 
-Agent 在开始执行前，必须完成侦察：
+---
 
-```
-1. 搜索目标领域的 3-5 个成功案例
-2. 分析它们的共同模式
-3. 检查自己的计划是否符合这些模式
-4. 如果不符合，调整计划
-5. 记录侦察发现到日志
-```
+## 5. Execution Agent Lifecycle
 
-侦察时间不超过总可用时间的 [学习时间占比]%（由学习基因控制）。
-
-### 5.3 执行阶段
-
-面向目标执行。每次行动后记录结果。
-
-### 5.4 感知 → 学习 → 适应（循环）
-
-```
-if 连续 N 次行动未达预期:
-    暂停执行
-    搜索 "为什么 [具体问题] 不工作"
-    分析搜索结果
-    提出替代方案
-    选择最优方案继续执行
-    记录学习过程到日志
-```
-
-### 5.5 死亡与遗言
-
-当里程碑超时未达标时，Agent 写遗言：
+### 5.1 Birth
 
 ```markdown
-## 遗言模板
+Agent receives a Prompt containing:
+1. Goals and constraints
+2. Hard rules (genes inherited from previous generations)
+3. Learning behavior instructions
+4. Available tools and environment description
+5. Key lessons from previous generations (encoded, not raw postmortems)
+```
 
-### 我是谁
-Gen-N，[赛道名]，存活 [时长]
+### 5.2 Recon Phase (Driven by learning genes)
 
-### 我做了什么
-[按时间线列出关键行动]
+Agent must complete reconnaissance before execution:
 
-### 什么有效
-[哪些行动产生了正面结果]
+```
+1. Search for 3-5 successful cases in the target domain
+2. Analyze their common patterns
+3. Check if own plan aligns with these patterns
+4. If not, adjust the plan
+5. Record recon findings to logs
+```
 
-### 什么无效
-[哪些行动浪费了时间]
+Recon time must not exceed [learning time ratio]% of total available time (controlled by learning genes).
 
-### 死因分析
-- 根因：[一句话]
-- 类型：环境问题 / 策略问题 / 学习不足 / 赛道不可行
+### 5.3 Execution Phase
 
-### 给下一代的建议
-- 硬性规则建议：[应该加什么硬约束]
-- 策略建议：[应该怎么调整策略]
-- 学习建议：[应该学什么/怎么学]
+Execute toward goals. Record results after each action.
 
-### 给上帝 Agent 的建议
-- 环境改进：[缺什么工具/基建]
-- Prompt 改进：[哪些指令不清楚/有歧义]
+### 5.4 Perceive → Learn → Adapt (Loop)
+
+```
+if N consecutive actions fail to meet expectations:
+    pause execution
+    search "why [specific problem] doesn't work"
+    analyze search results
+    propose alternatives
+    choose best alternative and continue
+    record learning process to logs
+```
+
+### 5.5 Death and Last Words
+
+When milestones are not met by deadline, Agent writes its last words:
+
+```markdown
+## Postmortem Template
+
+### Who I Am
+Gen-N, [Track Name], survived [duration]
+
+### What I Did
+[List key actions chronologically]
+
+### What Worked
+[Which actions produced positive results]
+
+### What Didn't Work
+[Which actions wasted time]
+
+### Cause of Death Analysis
+- Root cause: [one sentence]
+- Type: Environment issue / Strategy issue / Insufficient learning / Track not viable
+
+### Advice for Next Generation
+- Hard rule suggestions: [what hard constraints to add]
+- Strategy suggestions: [how to adjust strategy]
+- Learning suggestions: [what to learn / how to learn]
+
+### Advice for God Agent
+- Environment improvements: [what tools/infrastructure are missing]
+- Prompt improvements: [which instructions were unclear/ambiguous]
 ```
 
 ---
 
-## 六、上帝 Agent 的代际复盘流程
+## 6. God Agent's Generation Review Process
 
-每当一代 Agent 死亡或完成生命周期，上帝 Agent 执行：
+Whenever a generation dies or completes its lifecycle, God Agent executes:
 
 ```
-1. 读取遗言/最终报告
-2. 分类死因：
-   a. 环境/基建问题 → 优化环境
-   b. 行为/策略问题 → 优化下一代 Prompt
-   c. 学习能力问题 → 优化学习基因
-   d. 赛道不可行 → 关闭赛道
-3. 提炼硬性规则（用命换来的教训）
-4. 评估学习行为是否有效：
-   - Agent 有没有在该学习的时候学习？
-   - 学习的来源和深度是否合适？
-   - 学习有没有实际改变行为？
-5. 编写下一代 Prompt
-6. 更新赛道 Playbook
-7. 如有必要，调整 cron 频率、超时设置等运行参数
+1. Read postmortem/final report
+2. Classify cause of death:
+   a. Environment/infrastructure issue → Optimize environment
+   b. Behavior/strategy issue → Optimize next generation's Prompt
+   c. Learning ability issue → Optimize learning genes
+   d. Track not viable → Close track
+3. Extract hard rules (lessons paid for with lives)
+4. Evaluate whether learning behavior was effective:
+   - Did Agent learn when it should have?
+   - Were the learning sources and depth appropriate?
+   - Did learning actually change behavior?
+5. Write next generation's Prompt
+6. Update track Playbook
+7. If necessary, adjust cron frequency, timeout settings, and other runtime parameters
 ```
 
 ---
 
-## 七、通知与频率设计
+## 7. Notification and Frequency Design
 
-### 原则：异常驱动，非轮询驱动
+### Principle: Event-driven, not polling-driven
 
-| 事件 | 通知人类？ | 通知方式 |
-|------|-----------|---------|
-| Agent 死亡 | ✅ 是 | 简要死因 + 下一代计划 |
-| 里程碑达成 | ✅ 是 | 一句话确认 |
-| 需要人类决策 | ✅ 是 | 明确问题 + 选项 |
-| 常规运行中 | ❌ 否 | 静默运行 |
-| 发现阻塞需人类介入 | ✅ 是 | 第一次通知，不重复催 |
+| Event | Notify human? | Method |
+|-------|--------------|--------|
+| Agent death | ✅ Yes | Brief cause of death + next gen plan |
+| Milestone reached | ✅ Yes | One-line confirmation |
+| Human decision needed | ✅ Yes | Clear question + options |
+| Normal operation | ❌ No | Silent operation |
+| Blocker requiring human intervention | ✅ Yes | Notify once, don't nag |
 
-### Cron 频率建议
+### Suggested Cron Frequencies
 
-| 角色 | 频率 | 理由 |
-|------|------|------|
-| 上帝 Agent（复盘） | Agent 死亡时触发 + 每天 1 次定期 | 按需而非定时 |
-| 执行 Agent（短周期任务） | 1-4 小时 | 匹配实际决策频率 |
-| 执行 Agent（长周期任务，如量化） | 2-6 小时 | 横盘时无需频繁检查 |
-| 监控（健康检查） | 6-12 小时 | 只查进程是否存活 |
-
----
-
-## 八、V1 实验的教训（已编码）
-
-以下教训来自 2026-02-27 的首次实验，已编码为框架规则：
-
-1. **赛道预检是必须的** —— 4 条赛道有 3 条死于"需要人类身份"的硬约束
-2. **cron 频率必须匹配决策频率** —— 30 分钟一次巡检导致 100+ 条无效报告
-3. **死亡压力会导致无效重复** —— "达不到就死" 让 Agent 疯狂发无人看的文章
-4. **遗言要编码为硬规则** —— "读 postmortem" 不如直接写进 prompt 可靠
-5. **学习能力是基因的一部分** —— Agent 需要在活着时主动研究，而非盲目执行
-6. **上帝 Agent 是进化设计者，不是运维** —— 核心职责是分析模式、优化基因
-7. **只在状态变化时通知人类** —— 避免信息过载
+| Role | Frequency | Rationale |
+|------|-----------|-----------|
+| God Agent (review) | Triggered on Agent death + 1x daily | On-demand, not scheduled |
+| Execution Agent (short-cycle tasks) | 1-4 hours | Match actual decision frequency |
+| Execution Agent (long-cycle tasks, e.g. quant) | 2-6 hours | No need for frequent checks during sideways markets |
+| Monitoring (health check) | 6-12 hours | Only check if process is alive |
 
 ---
 
-## 九、下一步
+## 8. Lessons from V1 Experiment (Encoded)
 
-- [ ] 基于此框架选择新赛道（通过预检清单筛选）
-- [ ] 重新设计上帝 Agent 的 Prompt（从运维者 → 进化设计者）
-- [ ] 设计第一代执行 Agent 的 Prompt 模板（含学习基因）
-- [ ] 确定合理的 cron 频率和通知策略
-- [ ] 开始 V2 实验
+The following lessons come from the first experiment on 2026-02-27, now encoded as framework rules:
+
+1. **Track pre-check is mandatory** — 3 out of 4 tracks died from "requires human identity" hard constraints
+2. **Cron frequency must match decision frequency** — 30-minute patrols produced 100+ useless reports
+3. **Death pressure causes ineffective repetition** — "Fail and you die" made Agent spam articles nobody read
+4. **Postmortems must be encoded as hard rules** — "Read postmortem" is less reliable than writing it into the prompt
+5. **Learning ability is part of the genes** — Agent needs to actively research while alive, not blindly execute
+6. **God Agent is an evolution designer, not ops** — Core job is analyzing patterns and optimizing genes
+7. **Only notify humans on state changes** — Avoid information overload
+
+---
+
+## 9. Next Steps
+
+- [ ] Select new tracks based on this framework (filtered through pre-check checklist)
+- [ ] Redesign God Agent's Prompt (from ops → evolution designer)
+- [ ] Design first execution Agent Prompt template (with learning genes)
+- [ ] Determine reasonable cron frequencies and notification strategy
+- [ ] Begin V2 experiment

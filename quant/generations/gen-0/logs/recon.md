@@ -1,32 +1,32 @@
-# Gen-0 侦察报告
+# Gen-0 Recon Report
 > 2026-03-02 11:09 UTC
 
-## 来源
+## Sources
 - Investopedia: Algorithmic Trading Basics
-- Gene pool: 前代死因分析
-- 内建知识: 加密货币交易策略
+- Gene pool: Previous generation death analysis
+- Built-in knowledge: Cryptocurrency trading strategies
 
-## 关键发现
+## Key Findings
 
-### 策略选择
-1. **EMA Crossover (趋势跟踪)**: 短期EMA(9) vs 中期EMA(21)，适合趋势市
-2. **RSI Mean Reversion (均值回归)**: RSI超买/超卖反转，适合震荡市
-3. 两策略互补：趋势市用EMA，震荡市用RSI
+### Strategy Selection
+1. **EMA Crossover (Trend Following)**: Short-term EMA(9) vs mid-term EMA(21), suitable for trending markets
+2. **RSI Mean Reversion**: RSI overbought/oversold reversals, suitable for ranging markets
+3. The two strategies complement each other: EMA for trends, RSI for ranges
 
-### 前代致命错误（基因库总结）
-1. `capital = qty * price` 导致资金计算错误 → 必须用 cash + position 分离
-2. SHORT平仓逻辑未单独测试 → 需要专门测试
-3. 止损太窄频繁止损 / 太宽亏损过大 → 回测校准
-4. 裸跑node挂掉 → pm2保活
-5. 单策略无法适应市况变化 → 双策略
+### Fatal Errors from Previous Generations (Gene Pool Summary)
+1. `capital = qty * price` caused incorrect capital calculation → Must use cash + position separation
+2. SHORT close logic was not independently tested → Needs dedicated testing
+3. Stop-loss too tight causes frequent stops / too wide causes excessive loss → Calibrate via backtest
+4. Bare node process crashes → pm2 keepalive
+5. Single strategy can't adapt to changing market conditions → Dual strategy
 
-### 常见algo trading错误
-- 过拟合回测数据
-- 忽略滑点和手续费（模拟盘也要模拟0.1%手续费）
-- 情绪化修改参数（应该基于数据）
-- 仓位过大（限制5%）
+### Common Algo Trading Mistakes
+- Overfitting to backtest data
+- Ignoring slippage and fees (sim should also simulate 0.1% fee)
+- Emotionally tweaking parameters (should be data-driven)
+- Oversized positions (limit to 5%)
 
-## 策略设计
+## Strategy Design
 - **Strategy A (Trend)**: EMA(9)/EMA(21) crossover, 5min candles
 - **Strategy B (MeanRevert)**: RSI(14), oversold<30 buy / overbought>70 sell, 5min candles
 - **Risk**: 5% max position, 2% stop-loss, 3% take-profit

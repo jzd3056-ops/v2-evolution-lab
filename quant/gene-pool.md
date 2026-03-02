@@ -1,113 +1,113 @@
-# 量化交易基因库
+# Quantitative Trading Gene Pool
 
-> 前代 Agent 用命换来的规则。每条规则有置信度，基于验证次数动态调整。
+> Rules paid for with previous generations' lives. Each rule has a confidence score that adjusts dynamically based on validation count.
 
-## 置信度机制
+## Confidence Mechanism
 
-- **置信度**：0-100%，代表这条规则的可靠程度
-- **来源**：哪一代的死亡产生了这条规则
-- **验证记录**：后续代际对这条规则的验证/挑战结果
+- **Confidence**: 0-100%, represents how reliable this rule is
+- **Source**: Which generation's death produced this rule
+- **Validation Record**: How subsequent generations validated/challenged this rule
 
-### 规则如何进化
-1. 新规则诞生时，初始置信度 = 60%（一次死亡不足以完全确认）
-2. 后代遵守此规则并存活 → 置信度 +10%
-3. 后代违反此规则并死亡 → 置信度 +15%（用命验证了）
-4. 后代违反此规则并存活 → 置信度 -20%（规则可能不准确）
-5. 置信度 < 30% → 上帝 Agent 复盘，考虑降级为"软性建议"或删除
-6. 置信度 > 90% → 标记为"铁律"
+### How Rules Evolve
+1. New rule starts at confidence = 60% (one death isn't enough to fully confirm)
+2. Subsequent gen follows rule and survives → confidence +10%
+3. Subsequent gen violates rule and dies → confidence +15% (validated with their life)
+4. Subsequent gen violates rule and survives → confidence -20% (rule may be inaccurate)
+5. Confidence < 30% → God Agent reviews, considers downgrading to "soft suggestion" or deleting
+6. Confidence > 90% → Marked as "iron law"
 
-### Agent 与规则的关系
-- 置信度 ≥ 80%：必须遵守，除非有**极强的学习证据**表明不适用于当前情况
-- 置信度 50-79%：建议遵守，但如果侦察阶段发现明确矛盾，可以**记录理由后**调整
-- 置信度 < 50%：仅供参考，自行判断
-- **任何违反规则的行为都必须记录到日志**，说明理由，供上帝 Agent 复盘
+### Agent's Relationship with Rules
+- Confidence ≥ 80%: Must follow, unless there is **extremely strong learning evidence** that it doesn't apply to the current situation
+- Confidence 50-79%: Recommended to follow, but if recon phase finds clear contradiction, can **adjust after documenting reasoning**
+- Confidence < 50%: For reference only, use own judgment
+- **Any rule violation must be logged**, with reasoning, for God Agent review
 
 ---
 
-## 规则库
+## Rule Library
 
-### R1: 仓位不超过总资金的 5%
-- **置信度**: 75%
-- **来源**: V1 Gen-0 之死（仓位过大导致 -84%）
-- **类型**: 资金管理
-- **验证记录**:
-  - V1 Gen-0: 违反（20%仓位）→ 死亡（-84%）→ +15%
-  - V1 Gen-2: 遵守（5%仓位）→ 存活（+0.14%）→ +10%
-  - 初始 60% + 15% + 10% - 10%(可能过于保守限制了收益) = 75%
-- **备注**: 5% 是否太保守？Gen-2 存活但交易频率极低，可能需要在 5-10% 之间找平衡
+### R1: Position never exceeds 5% of total capital
+- **Confidence**: 75%
+- **Source**: V1 Gen-0 death (oversized position caused -84%)
+- **Type**: Capital management
+- **Validation Record**:
+  - V1 Gen-0: Violated (20% position) → Death (-84%) → +15%
+  - V1 Gen-2: Followed (5% position) → Survived (+0.14%) → +10%
+  - Initial 60% + 15% + 10% - 10% (may be too conservative, limiting returns) = 75%
+- **Note**: Is 5% too conservative? Gen-2 survived but trade frequency was very low, may need to find balance between 5-10%
 
-### R2: cash + position 分离追踪
-- **置信度**: 90% (铁律)
-- **来源**: V1 Gen-0 之死（capital = qty*price 丢掉 80% 现金）
-- **类型**: 代码实现
-- **验证记录**:
-  - V1 Gen-0: 违反 → 死亡（致命 bug）→ +15%
-  - V1 Gen-1: 遵守 → 存活 → +10%
-  - V1 Gen-2: 遵守 → 存活 → +10%
-  - 初始 60% + 15% + 10% + 10% - 5%(通用工程常识) = 90%
-- **备注**: 这是纯粹的代码正确性问题，置信度很高
+### R2: Track cash + position separately
+- **Confidence**: 90% (Iron Law)
+- **Source**: V1 Gen-0 death (capital = qty*price lost 80% of cash)
+- **Type**: Code implementation
+- **Validation Record**:
+  - V1 Gen-0: Violated → Death (fatal bug) → +15%
+  - V1 Gen-1: Followed → Survived → +10%
+  - V1 Gen-2: Followed → Survived → +10%
+  - Initial 60% + 15% + 10% + 10% - 5% (common engineering sense) = 90%
+- **Note**: This is purely a code correctness issue, high confidence justified
 
-### R3: DEATH 信号必须 process.exit(1)
-- **置信度**: 85%
-- **来源**: V1 Gen-0（DEATH 只打日志不停交易，继续亏损）
-- **类型**: 风控
-- **验证记录**:
-  - V1 Gen-0: 违反 → 死亡 → +15%
-  - V1 Gen-2: 遵守 → 存活 → +10%
-  - 初始 60% + 15% + 10% = 85%
+### R3: DEATH signal must trigger process.exit(1)
+- **Confidence**: 85%
+- **Source**: V1 Gen-0 (DEATH only logged, didn't stop trading, continued losing)
+- **Type**: Risk control
+- **Validation Record**:
+  - V1 Gen-0: Violated → Death → +15%
+  - V1 Gen-2: Followed → Survived → +10%
+  - Initial 60% + 15% + 10% = 85%
 
-### R4: 至少两个策略覆盖不同市况
-- **置信度**: 65%
-- **来源**: V1 Gen-1 之死（单一 EMA 策略在横盘市场 6h 零交易）
-- **类型**: 策略设计
-- **验证记录**:
-  - V1 Gen-1: 单策略 → 死亡（0 交易）→ +15%
-  - V1 Gen-2: 双策略 → 存活但交易频率仍低 → +5%（部分验证）
-  - 初始 60% + 15% + 5% - 15%(双策略导致对冲抵消收益的问题) = 65%
-- **备注**: 双策略在 V1 Gen-2 中出现了同时 LONG+SHORT 对冲的问题，可能需要更聪明的策略组合方式
+### R4: At least two strategies covering different market conditions
+- **Confidence**: 65%
+- **Source**: V1 Gen-1 death (single EMA strategy, 6h zero trades in sideways market)
+- **Type**: Strategy design
+- **Validation Record**:
+  - V1 Gen-1: Single strategy → Death (0 trades) → +15%
+  - V1 Gen-2: Dual strategy → Survived but trade frequency still low → +5% (partial validation)
+  - Initial 60% + 15% + 5% - 15% (dual strategies caused hedging that canceled out returns) = 65%
+- **Note**: Dual strategy in V1 Gen-2 had simultaneous LONG+SHORT hedging issues, may need smarter strategy combination approach
 
-### R5: 连续 2h 无信号 → 放宽入场条件
-- **置信度**: 60%
-- **来源**: V1 Gen-1 之死 + Gen-2 设计
-- **类型**: 策略设计
-- **验证记录**:
-  - V1 Gen-1: 无此机制 → 6h 零交易 → 死亡
-  - V1 Gen-2: 有此机制 → 确实触发了交易，但放宽后容易进入低质量交易
-  - 初始 60% + 0%（效果存疑）= 60%
-- **备注**: 机制本身有道理，但"放宽多少"和"放宽后的交易质量"需要更多数据
+### R5: 2h with no signal → Widen entry conditions
+- **Confidence**: 60%
+- **Source**: V1 Gen-1 death + Gen-2 design
+- **Type**: Strategy design
+- **Validation Record**:
+  - V1 Gen-1: No such mechanism → 6h zero trades → Death
+  - V1 Gen-2: Had this mechanism → Did trigger trades, but widening led to low-quality trades
+  - Initial 60% + 0% (effectiveness uncertain) = 60%
+- **Note**: The mechanism makes sense, but "how much to widen" and "trade quality after widening" need more data
 
-### R6: sim-trader 必须用 pm2 保活
-- **置信度**: 90% (铁律)
-- **来源**: V1 Gen-0/Gen-1（裸跑 node 反复崩溃）
-- **类型**: 基建
-- **验证记录**:
-  - V1 Gen-0: 裸跑 → 反复崩溃
-  - V1 Gen-1: 裸跑 → 反复崩溃
-  - V1 Gen-2: pm2 → 稳定运行 24h+
-  - 初始 60% + 15% + 15% = 90%
+### R6: sim-trader must use pm2 for keepalive
+- **Confidence**: 90% (Iron Law)
+- **Source**: V1 Gen-0/Gen-1 (bare node process crashed repeatedly)
+- **Type**: Infrastructure
+- **Validation Record**:
+  - V1 Gen-0: Bare process → Repeated crashes
+  - V1 Gen-1: Bare process → Repeated crashes
+  - V1 Gen-2: pm2 → Stable operation 24h+
+  - Initial 60% + 15% + 15% = 90%
 
-### R7: 回测和实盘用相同时间框架
-- **置信度**: 70%
-- **来源**: V1 设计经验（回测用小时线但实盘用分钟线导致信号不一致）
-- **类型**: 策略设计
-- **验证记录**:
-  - 逻辑上成立但未被直接的死亡验证
-  - 初始 60% + 10% = 70%
+### R7: Backtest and live trading must use the same timeframe
+- **Confidence**: 70%
+- **Source**: V1 design experience (backtest used hourly candles but live used minute candles, causing signal inconsistency)
+- **Type**: Strategy design
+- **Validation Record**:
+  - Logically sound but not directly validated by a death
+  - Initial 60% + 10% = 70%
 
-### R8: 连续 3 笔亏损 → 暂停 15 分钟
-- **置信度**: 55%
-- **来源**: V1 Gen-2 设计（未实际触发过）
-- **类型**: 风控
-- **验证记录**:
-  - 未被验证过（V1 Gen-2 运行期间未触发）
-  - 初始 60% - 5%(未验证) = 55%
-- **备注**: 15 分钟可能太短也可能太长，需要实际数据
+### R8: 3 consecutive losses → Pause for 15 minutes
+- **Confidence**: 55%
+- **Source**: V1 Gen-2 design (never actually triggered)
+- **Type**: Risk control
+- **Validation Record**:
+  - Never validated (didn't trigger during V1 Gen-2 runtime)
+  - Initial 60% - 5% (unvalidated) = 55%
+- **Note**: 15 minutes may be too short or too long, needs real data
 
-### R9: SHORT 平仓逻辑必须单独测试
-- **置信度**: 80%
-- **来源**: V1 Gen-0（SHORT 平仓时 capital += capital 直接翻倍）
-- **类型**: 代码实现
-- **验证记录**:
-  - V1 Gen-0: 未测试 → 致命 bug → +15%
-  - V1 Gen-2: 单独实现 → 正常运行 → +10%
-  - 初始 60% + 15% + 10% - 5% = 80%
+### R9: SHORT close logic must be tested independently
+- **Confidence**: 80%
+- **Source**: V1 Gen-0 (SHORT close caused capital += capital, instantly doubling)
+- **Type**: Code implementation
+- **Validation Record**:
+  - V1 Gen-0: Not tested → Fatal bug → +15%
+  - V1 Gen-2: Implemented separately → Normal operation → +10%
+  - Initial 60% + 15% + 10% - 5% = 80%

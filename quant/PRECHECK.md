@@ -1,23 +1,23 @@
-# 量化交易赛道预检
+# Quantitative Trading Track Pre-check
 
-## 闭环检查
-- [x] Agent 能否自主完成注册/开户？—— 模拟盘无需注册，API 数据免费（Kraken/CoinGecko）
-- [x] Agent 能否自主获取数据？—— 公开 API，无需 API key
-- [x] Agent 能否自主执行交易？—— 模拟盘自主运行
-- [ ] Agent 能否自主完成真实交易？—— 需要交易所账号（后续阶段）
+## Closed-loop Check
+- [x] Can Agent autonomously register/open accounts? — Sim doesn't require registration, API data is free (Kraken/CoinGecko)
+- [x] Can Agent autonomously acquire data? — Public APIs, no API key needed
+- [x] Can Agent autonomously execute trades? — Sim runs autonomously
+- [ ] Can Agent autonomously execute real trades? — Requires exchange account (future phase)
 
-## 环境检查
-- [x] 有 API 接口（Kraken public API, CoinGecko）
-- [x] 无反爬机制（公开数据）
-- [x] 无特殊网络要求
+## Environment Check
+- [x] Has API interface (Kraken public API, CoinGecko)
+- [x] No anti-scraping mechanisms (public data)
+- [x] No special network requirements
 
-## 成本检查
-- 每代运行成本：约 $0（模拟盘）+ token 消耗
-- 预估 5-10 代收敛
-- 模拟盘本金：$10,000
+## Cost Check
+- Per-generation runtime cost: ~$0 (sim) + token consumption
+- Estimated 5-10 generations to converge
+- Sim starting capital: $10,000
 
-## 人类依赖点
-- 模拟盘阶段：无
-- 实盘阶段：需要人类提供交易所 API key（标记为未来 BLOCKER）
+## Human Dependencies
+- Sim phase: None
+- Live trading phase: Human must provide exchange API key (marked as future BLOCKER)
 
-## 结论：✅ 通过，可启动
+## Conclusion: ✅ Passed, clear to launch

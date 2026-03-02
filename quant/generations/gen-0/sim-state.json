@@ -1,17 +1,27 @@
 {
-  "cash": 10000,
+  "cash": 9999.5,
   "position": {
-    "qty": 0,
-    "side": null,
-    "entryPrice": 0
+    "qty": 0.007534041246916976,
+    "side": "LONG",
+    "entryPrice": 66365.445
   },
-  "trades": [],
+  "trades": [
+    {
+      "time": "2026-03-02T11:48:58.628Z",
+      "action": "OPEN_LONG",
+      "price": 66365.445,
+      "qty": "0.007534",
+      "fee": "0.50",
+      "reason": "ema_cross: EMA9 crossed above EMA21",
+      "cash": "9999.50"
+    }
+  ],
   "dailyPnL": 0,
   "dailyStart": 1772450038415,
   "consecutiveLosses": 0,
   "pauseUntil": 0,
-  "lastSignalTime": 1772450038415,
-  "totalTrades": 0,
+  "lastSignalTime": 1772452138628,
+  "totalTrades": 1,
   "totalPnL": 0,
   "priceHistory": [],
   "widenedEntry": false

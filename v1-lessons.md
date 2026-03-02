@@ -1,30 +1,30 @@
-# V1 实验教训总结
+# V1 Experiment Lessons Summary
 
-> 来源：2026-02-27 ~ 02-28，36 小时，4 条赛道实验
+> Source: 2026-02-27 ~ 02-28, 36 hours, 4 tracks
 
-## 关键数据
+## Key Data
 
-| 赛道 | 代数 | 存活时长 | 结果 |
-|------|------|---------|------|
-| 小红书/社媒 | 3 代 | ~30h | HN 29 评论 = 5 karma，死于限流+密码丢失 |
-| 量化交易 | 3 代 | ~24h | Gen-2 微利 +0.14%，唯一存活线 |
-| TG Bot | 1 代 | ~28h | 15+ 功能，0 用户，死于无法获客 |
-| 微任务 | 1 代 | 17min | 所有平台需人类身份验证，赛道关闭 |
+| Track | Generations | Survival Time | Result |
+|-------|------------|---------------|--------|
+| Xiaohongshu/Social Media | 3 gens | ~30h | HN 29 comments = 5 karma, died from rate limiting + lost password |
+| Quantitative Trading | 3 gens | ~24h | Gen-2 marginal profit +0.14%, only surviving track |
+| TG Bot | 1 gen | ~28h | 15+ features, 0 users, died from inability to acquire users |
+| Micro-tasks | 1 gen | 17min | All platforms require human identity verification, track closed |
 
-## 编码为框架规则的 7 条教训
+## 7 Lessons Encoded as Framework Rules
 
-1. **赛道预检是必须的** —— 3/4 赛道死于"需要人类身份"
-2. **cron 频率要匹配决策频率** —— 30min 巡检产生 100+ 条无效报告
-3. **死亡压力导致无效重复** —— TG Bot 发了 18 篇 0 浏览的文章
-4. **遗言要编码为硬规则** —— "读 postmortem" 不如写进 prompt
-5. **学习能力是基因的一部分** —— 盲目执行不如先研究再动手
-6. **上帝 Agent 是进化设计者，不是运维** —— 核心是分析模式、优化基因
-7. **异常驱动通知** —— 不再每 30 分钟汇报"没变化"
+1. **Track pre-check is mandatory** — 3/4 tracks died from "requires human identity"
+2. **Cron frequency must match decision frequency** — 30min patrols produced 100+ useless reports
+3. **Death pressure causes ineffective repetition** — TG Bot posted 18 articles with 0 views
+4. **Postmortems must be encoded as hard rules** — "Read postmortem" is less reliable than writing it into the prompt
+5. **Learning ability is part of the genes** — Blind execution loses to research-first approach
+6. **God Agent is an evolution designer, not ops** — Core job is analyzing patterns and optimizing genes
+7. **Event-driven notifications** — No more reporting "no changes" every 30 minutes
 
-## 量化赛道的具体教训
+## Quantitative Track Specific Lessons
 
-- Gen-0：仓位计算 bug（capital = qty*price 丢掉现金），$10K → $1.6K（-84%）
-- Gen-1：矫枉过正，策略过于保守，6h 零交易
-- Gen-2：平衡风控和活跃度，双策略+自适应入场，微利运行
-- sim-trader 裸跑反复崩溃 → 必须用 pm2 保活
-- 横盘市场 EMA 不出信号 → 需要多策略覆盖不同市况
+- Gen-0: Position calculation bug (capital = qty*price lost track of cash), $10K → $1.6K (-84%)
+- Gen-1: Overcorrected, strategy too conservative, 6h zero trades
+- Gen-2: Balanced risk control and activity, dual strategy + adaptive entry, marginal profit
+- sim-trader running without process manager crashed repeatedly → must use pm2 for keepalive
+- Sideways market EMA produces no signals → need multiple strategies covering different market conditions

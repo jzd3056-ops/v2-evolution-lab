@@ -1,19 +1,19 @@
-# 环境/基建清单
+# Environment / Infrastructure Checklist
 
-## 已就绪
-- [x] Node.js 运行时
-- [x] npm / pm2 进程管理
-- [x] Git + GitHub 推送
-- [x] web_fetch（HTTP 请求）
-- [x] 文件读写
-- [x] Cron 调度（OpenClaw）
+## Ready
+- [x] Node.js runtime
+- [x] npm / pm2 process management
+- [x] Git + GitHub push
+- [x] web_fetch (HTTP requests)
+- [x] File read/write
+- [x] Cron scheduling (OpenClaw)
 
-## 量化赛道需要
-- [x] Kraken 公开 API（价格数据）
-- [x] CoinGecko API（市场数据）
-- [x] 本地模拟盘引擎
-- [ ] 回测框架（待优化）
+## Quantitative Track Requirements
+- [x] Kraken public API (price data)
+- [x] CoinGecko API (market data)
+- [x] Local simulation engine
+- [ ] Backtesting framework (needs optimization)
 
-## 待建设
-- [ ] 更好的状态持久化机制（减少每次重新读文件的开销）
-- [ ] 异常检测自动化（不靠高频巡检）
+## To Build
+- [ ] Better state persistence mechanism (reduce overhead of re-reading files each time)
+- [ ] Automated anomaly detection (not relying on high-frequency polling)
