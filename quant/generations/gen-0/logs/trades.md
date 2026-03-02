@@ -28,3 +28,15 @@
 - BTC rallied ~$3K since last close ($67,748→$69,046) — missed move but took profit correctly
 - Consecutive losses: 0 | Learning loop: not triggered
 - Status: healthy, flat, waiting for RSI pullback or EMA crossover
+| 2026-03-02T16:43:58.788Z | OPEN_SHORT | $69676.015 | 0.007188 | - | rsi_revert: RSI(69.0) rose above 65 | cash: $10016.00 |
+
+## 2026-03-02 18:00 UTC — Cron Check #5
+- pm2 gen0-sim: online, 6h uptime, 0 restarts ✅
+- BTC spot: $69,124 | EMA9: 69,181 ≈ EMA21: 69,152 (converging, near crossover)
+- RSI: 53.0 (neutral)
+- Open position: SHORT 0.007188 BTC @ $69,676 (RSI reversion entry at 16:43)
+- Unrealized PnL: ~+$3.97 | Realized PnL: +$18.00 | Cash: $10,016.00
+- 4 closed trades (1L, 3W) — need 5 by Day 1 milestone ⚠️
+- EMA9/EMA21 very close — potential bearish crossover would confirm SHORT
+- Consecutive losses: 0 | Learning loop: not triggered
+- Status: healthy, holding SHORT, monitoring for EMA crossover or RSI extremes
