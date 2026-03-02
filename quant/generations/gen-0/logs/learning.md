@@ -29,3 +29,13 @@
 - R1 compliance: ✅ position = ~5% of capital
 - R2 compliance: ✅ cash/position tracked separately
 - Status: healthy, holding LONG, monitoring for exit signal
+
+## 2026-03-02 20:00 UTC — Cron Check #6
+- pm2 gen0-sim: online, 8h uptime, 0 restarts ✅
+- BTC spot: $68,944 | SHORT 0.007188 BTC @ $69,676 (entry at 16:43 UTC)
+- Unrealized PnL: +$5.26 | Realized PnL: +$18.00 | Cash: $10,016.00 | Equity: ~$10,522
+- 4 closed trades (1L, 3W) — need 5 by Day 1 milestone ⚠️ (close to target)
+- Position held for 3h17m — price dropped from entry, SHORT in profit
+- Consecutive losses: 0 | Learning loop: not triggered
+- Milestones: Hour 4 ✅ (had trades + backtest by then) | Day 1 (5 trades): 4/5, need 1 more
+- Status: healthy, holding SHORT, sim-trader running autonomously
