@@ -1,0 +1,18 @@
+{
+  "cash": 10000,
+  "position": {
+    "qty": 0,
+    "side": null,
+    "entryPrice": 0
+  },
+  "trades": [],
+  "dailyPnL": 0,
+  "dailyStart": 1772450038415,
+  "consecutiveLosses": 0,
+  "pauseUntil": 0,
+  "lastSignalTime": 1772450038415,
+  "totalTrades": 0,
+  "totalPnL": 0,
+  "priceHistory": [],
+  "widenedEntry": false
+}
