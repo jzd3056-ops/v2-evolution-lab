@@ -16,3 +16,16 @@
 - Signals: NONE — waiting for EMA crossover or RSI extremes
 - No trades yet, $10,000 cash, $0 PnL
 - Status: healthy, monitoring
+
+## 2026-03-02 12:00 UTC — Cron Check #2
+- pm2 gen0-sim: online, 46min uptime, 0 restarts ✅
+- 1 trade opened: LONG @ $66,365.45 (0.007534 BTC, ~$500 = 5% position) at 11:48 UTC
+- Entry reason: EMA9 crossed above EMA21 (ema_cross signal)
+- Current BTC: ~$66,319 | Unrealized PnL: ~-$0.35 (negligible)
+- EMA9: 66,246 > EMA21: 66,229 (bullish lean holds)
+- RSI: 54.5 (neutral, no exit signal)
+- Cash: $9,999.50 (fee deducted)
+- Consecutive losses: 0 | Learning loop: not triggered
+- R1 compliance: ✅ position = ~5% of capital
+- R2 compliance: ✅ cash/position tracked separately
+- Status: healthy, holding LONG, monitoring for exit signal
