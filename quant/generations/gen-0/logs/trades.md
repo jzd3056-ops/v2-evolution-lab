@@ -168,3 +168,16 @@
 - BTC drifting up slightly from $68,270 entry; SHORT under mild pressure but within normal range
 - Milestones: Hour 4 ✅ | Day 1 (5 trades) ✅ | Day 3 (+returns): +$19.16 realized ✅
 - Status: healthy, holding SHORT, sim-trader autonomous
+| 2026-03-03T21:28:58.752Z | CLOSE_SHORT | $67928.395 | 0.007333 | 2.00 | signal_reversal | cash: $10014.16 |
+| 2026-03-03T21:28:58.752Z | OPEN_LONG | $67928.395 | 0.007371 | - | rsi_revert: RSI(34.1) dropped below 35 | cash: $10013.66 |
+
+## 2026-03-03 22:00 UTC — Cron Check #19
+- pm2 gen0-sim: online, 34h uptime, 0 restarts ✅
+- BTC spot: $68,035 (Kraken) | LONG 0.007371 BTC @ $67,928 (entry at 21:28 UTC, held ~32min)
+- Unrealized PnL: ~+$0.79 | Realized PnL: +$21.16 | Cash: $10,013.66 | Equity: ~$10,014.45
+- 15 closed trades total (9W, 6L) — Win rate: 60%
+- Today's PnL: +$1.49 realized (modest positive day)
+- Consecutive losses: 0 | Learning loop: not triggered
+- Milestones: Hour 4 ✅ | Day 1 (5 trades) ✅ | Day 3 (+returns): +$21.16 realized ✅
+- BTC recovering from intraday low; LONG slightly in profit
+- Status: healthy, holding LONG, sim-trader autonomous
