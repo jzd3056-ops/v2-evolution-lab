@@ -50,3 +50,16 @@
 - Consecutive losses: 0 | Learning loop: not triggered
 - Milestones: Hour 4 ✅ | Day 1 (5 trades): 4/5, need 1 more close
 - Status: healthy, holding SHORT, sim-trader autonomous
+| 2026-03-02T23:33:58.682Z | CLOSE_SHORT | $68871.995 | 0.007188 | 5.28 | signal_reversal | cash: $10021.28 |
+| 2026-03-02T23:33:58.682Z | OPEN_LONG | $68871.995 | 0.007275 | - | rsi_revert: RSI(32.6) dropped below 35 | cash: $10020.78 |
+
+## 2026-03-03 00:00 UTC — Cron Check #8
+- pm2 gen0-sim: online, 12h uptime, 0 restarts ✅
+- BTC spot: ~$68,773 | LONG 0.007275 BTC @ $68,872 (entry at 23:33 UTC)
+- Unrealized PnL: ~-$0.72 | Realized PnL: +$23.28 | Cash: $10,020.78 | Equity: ~$10,020.06
+- 5 closed trades (1L, 4W) — Day 1 milestone ✅ (5 trades achieved!)
+- RSI: 33.9 (oversold, supports LONG thesis)
+- EMA9: 68,929 < EMA21: 69,080 (bearish, but RSI entry overrides per dual-strategy design)
+- Consecutive losses: 0 | Learning loop: not triggered
+- Milestones: Hour 4 ✅ | Day 1 (5 trades) ✅ | Day 3 (+returns): +$23.28, on track ✅
+- Status: healthy, holding LONG on RSI reversion, sim-trader autonomous
