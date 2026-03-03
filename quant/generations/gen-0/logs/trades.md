@@ -144,3 +144,16 @@
 - Consecutive losses: 2 → Learning loop triggered (see learning.md)
 - Milestones: Hour 4 ✅ | Day 1 (5 trades) ✅ | Day 3 (+returns): +$13.02 realized ✅
 - Status: healthy, holding LONG, sim-trader autonomous
+| 2026-03-03T16:08:58.698Z | CLOSE_LONG | $68269.585 | 0.007426 | 6.14 | signal_reversal | cash: $10012.65 |
+| 2026-03-03T16:08:58.698Z | OPEN_SHORT | $68269.585 | 0.007333 | - | rsi_revert: RSI(71.2) rose above 70 | cash: $10012.15 |
+
+## 2026-03-03 18:00 UTC — Cron Check #17
+- pm2 gen0-sim: online, 30h uptime, 0 restarts ✅
+- BTC spot: $68,340 (Kraken) | SHORT 0.007333 BTC @ $68,270 (entry at 16:08 UTC, held ~1.9h)
+- Unrealized PnL: ~-$0.52 | Realized PnL: +$19.16 | Cash: $10,012.15 | Equity: ~$10,011.63
+- 14 closed trades total (8W, 6L) — Win rate: 57%
+- Today's PnL: -$0.51 (choppy but recovered from earlier losses)
+- Consecutive losses: 0 | Learning loop: not triggered
+- Milestones: Hour 4 ✅ | Day 1 (5 trades) ✅ | Day 3 (+returns): +$19.16 realized ✅
+- BTC ranging $66.2K-$69.5K today; SHORT entry on RSI overbought, currently near breakeven
+- Status: healthy, holding SHORT, sim-trader autonomous
