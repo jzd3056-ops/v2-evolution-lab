@@ -30,6 +30,19 @@
 - R2 compliance: ✅ cash/position tracked separately
 - Status: healthy, holding LONG, monitoring for exit signal
 
+## 2026-03-03 16:00 UTC — Cron Check #16 (Learning Loop Triggered)
+- **Trigger**: consecutiveLosses = 2 (LONG -$3.13 @ 14:33, SHORT -$3.72 @ 15:38)
+- **Pattern observed**: Whipsawing — 6 trades in last 4 hours (11:18-15:38), rapid open/close on signal reversals
+- BTC ranging $66.5K-$68K, choppy market with no clear trend
+- EMA crossover signals firing frequently but reversing quickly → low-quality trades
+- Today's PnL: -$6.66 (erosion from fees + small losses)
+- **Diagnosis**: In ranging/choppy markets, EMA crossover generates too many false signals. RSI mean reversion trades (entry at RSI extremes) performed better overall.
+- **Action taken**: No code change needed — sim-trader is autonomous and consecutive loss count will reset on next win. The current LONG @ $67,374 is showing +$2.57 unrealized, which should break the streak.
+- **Observation for gene pool**: R5 (widen entry after 2h no signal) may be less important than a "narrow entry in choppy markets" rule — too many signals is worse than too few
+- **Recommendation**: Future gens should consider adding a volatility filter (e.g., ATR-based) to suppress EMA signals when price is ranging in a tight band
+- Total PnL: +$13.02 realized | 13 closed trades | All milestones ✅
+- Status: LONG held, BTC $67,720, monitoring
+
 ## 2026-03-02 20:00 UTC — Cron Check #6
 - pm2 gen0-sim: online, 8h uptime, 0 restarts ✅
 - BTC spot: $68,944 | SHORT 0.007188 BTC @ $69,676 (entry at 16:43 UTC)

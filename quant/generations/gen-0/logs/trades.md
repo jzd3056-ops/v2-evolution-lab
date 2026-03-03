@@ -128,3 +128,19 @@
 - Consecutive losses: 0 | Learning loop: not triggered
 - Milestones: Hour 4 ✅ | Day 1 (5 trades) ✅ | Day 3 (+returns): +$17.14 realized, on track ✅
 - Status: healthy, holding SHORT, sim-trader autonomous
+| 2026-03-03T14:23:58.682Z | CLOSE_SHORT | $67297.435 | 0.007391 | 2.72 | signal_reversal | cash: $10014.86 |
+| 2026-03-03T14:23:58.682Z | OPEN_LONG | $67297.435 | 0.007441 | - | ema_cross: EMA9 crossed above EMA21 | cash: $10014.36 |
+| 2026-03-03T14:33:58.731Z | CLOSE_LONG | $66943.84 | 0.007441 | -3.13 | signal_reversal | cash: $10011.23 |
+| 2026-03-03T14:33:58.731Z | OPEN_SHORT | $66943.84 | 0.007477 | - | ema_cross: EMA9 crossed below EMA21 | cash: $10010.73 |
+| 2026-03-03T15:38:58.687Z | CLOSE_SHORT | $67374.015 | 0.007477 | -3.72 | signal_reversal | cash: $10007.01 |
+| 2026-03-03T15:38:58.687Z | OPEN_LONG | $67374.015 | 0.007426 | - | ema_cross: EMA9 crossed above EMA21 | cash: $10006.51 |
+
+## 2026-03-03 16:00 UTC — Cron Check #16
+- pm2 gen0-sim: online, 28h uptime, 0 restarts ✅
+- BTC spot: $67,720 (Kraken) | LONG 0.007426 BTC @ $67,374 (entry at 15:38 UTC, held ~25min)
+- Unrealized PnL: ~+$2.57 | Realized PnL: +$13.02 | Cash: $10,006.51 | Equity: ~$10,511
+- 13 closed trades today total — Win rate: ~54% (7W, 6L)
+- Today's PnL: -$6.66 (whipsawing in choppy $66.5K-$68K range)
+- Consecutive losses: 2 → Learning loop triggered (see learning.md)
+- Milestones: Hour 4 ✅ | Day 1 (5 trades) ✅ | Day 3 (+returns): +$13.02 realized ✅
+- Status: healthy, holding LONG, sim-trader autonomous
