@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quant Bot Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0e17;--card:#111827;--border:#1e293b;--text:#e2e8f0;--dim:#64748b;--green:#10b981;--red:#ef4444;--blue:#3b82f6;--yellow:#f59e0b;--purple:#8b5cf6}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:20px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.header h1{font-size:24px;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .status{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--dim)}
+.header .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.3)}
+.card .label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--dim);margin-bottom:8px}
+.card .value{font-size:24px;font-weight:700}
+.card .sub{font-size:12px;color:var(--dim);margin-top:4px}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
+.section h2{font-size:16px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section h2 span{font-size:18px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;padding:10px 12px;color:var(--dim);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border)}
+td{padding:10px 12px;border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.badge-long{background:rgba(16,185,129,.15);color:var(--green)}
+.badge-short{background:rgba(239,68,68,.15);color:var(--red)}
+.chart-wrap{height:300px;position:relative}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.metric{text-align:center;padding:16px;background:rgba(255,255,255,.02);border-radius:8px}
+.metric .mv{font-size:20px;font-weight:700}
+.metric .ml{font-size:11px;color:var(--dim);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
+.countdown{font-variant-numeric:tabular-nums}
+@media(max-width:768px){.grid{grid-template-columns:1fr 1fr}.card .value{font-size:18px}body{padding:12px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>⚡ Quant Trading Bot</h1>
+  <div class="status"><div class="dot"></div>Live · Gen 0 · <span class="countdown" id="countdown">30s</span></div>
+</div>
+<div class="grid" id="cards"></div>
+<div class="section">
+  <h2><span>📈</span> PnL Curve</h2>
+  <div class="chart-wrap"><canvas id="pnlChart"></canvas></div>
+</div>
+<div class="section">
+  <h2><span>📊</span> Key Metrics</h2>
+  <div class="metrics-grid" id="metrics"></div>
+</div>
+<div class="section">
+  <h2><span>📋</span> Trade History</h2>
+  <div style="overflow-x:auto"><table id="trades"><thead><tr><th>Time</th><th>Action</th><th>Price</th><th>Qty</th><th>PnL</th><th>Reason</th></tr></thead><tbody></tbody></table></div>
+</div>
+
+<script>
+let chart=null, timer=30;
+const $=id=>document.getElementById(id);
+
+function fmt(n,d=2){return n!=null?Number(n).toFixed(d):'—'}
+function fmtUSD(n){return n!=null?'$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):'—'}
+function cls(n){return n>0?'pos':n<0?'neg':''}
+function timeStr(t){return new Date(t).toLocaleString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false})}
+
+async function refresh(){
+  try{
+    const [stateRes,priceRes]=await Promise.all([fetch('/api/state'),fetch('/api/price')]);
+    const state=await stateRes.json(), {price:livePrice}=await priceRes.json();
+    render(state,livePrice);
+  }catch(e){console.error(e)}
+}
+
+function render(s,livePrice){
+  const pos=s.position||{};
+  const hasPos=pos.qty>0;
+  const unrealPnL=hasPos?(pos.side==='LONG'?(livePrice-pos.entryPrice)*pos.qty:(pos.entryPrice-livePrice)*pos.qty):0;
+  const equity=s.cash+(hasPos?pos.qty*livePrice:0);
+  const closedTrades=s.trades.filter(t=>t.action.startsWith('CLOSE'));
+  
+  // Cards
+  $('cards').innerHTML=`
+    <div class="card"><div class="label">Cash</div><div class="value">${fmtUSD(s.cash)}</div></div>
+    <div class="card"><div class="label">Position</div><div class="value">${hasPos?`<span class="badge badge-${pos.side.toLowerCase()}">${pos.side}</span>`:'Flat'}</div>${hasPos?`<div class="sub">${fmt(pos.qty,6)} BTC @ ${fmtUSD(pos.entryPrice)}</div>`:''}</div>
+    <div class="card"><div class="label">Live BTC Price</div><div class="value">${fmtUSD(livePrice)}</div></div>
+    <div class="card"><div class="label">Unrealized PnL</div><div class="value ${cls(unrealPnL)}">${unrealPnL>=0?'+':''}${fmtUSD(unrealPnL)}</div></div>
+    <div class="card"><div class="label">Realized PnL</div><div class="value ${cls(s.totalPnL)}">${s.totalPnL>=0?'+':''}${fmtUSD(s.totalPnL)}</div></div>
+    <div class="card"><div class="label">Equity</div><div class="value">${fmtUSD(equity)}</div><div class="sub">Initial: $10,000</div></div>
+  `;
+
+  // Metrics
+  const wins=closedTrades.filter(t=>parseFloat(t.pnl)>0);
+  const losses=closedTrades.filter(t=>parseFloat(t.pnl)<0);
+  const winRate=closedTrades.length?((wins.length/closedTrades.length)*100):0;
+  const avgWin=wins.length?(wins.reduce((a,t)=>a+parseFloat(t.pnl),0)/wins.length):0;
+  const avgLoss=losses.length?(losses.reduce((a,t)=>a+parseFloat(t.pnl),0)/losses.length):0;
+  let cumPnl=0,maxPeak=0,maxDD=0;
+  closedTrades.forEach(t=>{cumPnl+=parseFloat(t.pnl);if(cumPnl>maxPeak)maxPeak=cumPnl;const dd=maxPeak-cumPnl;if(dd>maxDD)maxDD=dd});
+  
+  $('metrics').innerHTML=`
+    <div class="metric"><div class="mv">${closedTrades.length}</div><div class="ml">Total Trades</div></div>
+    <div class="metric"><div class="mv ${cls(winRate-50)}">${fmt(winRate,1)}%</div><div class="ml">Win Rate</div></div>
+    <div class="metric"><div class="mv pos">${fmtUSD(avgWin)}</div><div class="ml">Avg Win</div></div>
+    <div class="metric"><div class="mv neg">${fmtUSD(avgLoss)}</div><div class="ml">Avg Loss</div></div>
+    <div class="metric"><div class="mv neg">-${fmtUSD(maxDD)}</div><div class="ml">Max Drawdown</div></div>
+    <div class="metric"><div class="mv">${s.consecutiveLosses||0}</div><div class="ml">Consec. Losses</div></div>
+  `;
+
+  // Trade table
+  const tbody=$('trades').querySelector('tbody');
+  tbody.innerHTML=s.trades.slice().reverse().map(t=>{
+    const pnl=t.pnl?parseFloat(t.pnl):null;
+    const isOpen=t.action.startsWith('OPEN');
+    const side=t.action.includes('LONG')?'long':'short';
+    return `<tr>
+      <td>${timeStr(t.time)}</td>
+      <td><span class="badge badge-${side}">${t.action.replace('_',' ')}</span></td>
+      <td>${fmtUSD(t.price)}</td>
+      <td>${fmt(t.qty,6)}</td>
+      <td class="${cls(pnl)}">${pnl!=null?(pnl>=0?'+':'')+fmtUSD(pnl):'—'}</td>
+      <td style="color:var(--dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${t.reason||''}">${t.reason||'—'}</td>
+    </tr>`}).join('');
+
+  // PnL Chart
+  const labels=[],data=[];
+  let cum=0;
+  closedTrades.forEach(t=>{cum+=parseFloat(t.pnl);labels.push(timeStr(t.time));data.push(parseFloat(cum.toFixed(2)))});
+  
+  if(chart)chart.destroy();
+  const ctx=$('pnlChart').getContext('2d');
+  const gradient=ctx.createLinearGradient(0,0,0,300);
+  gradient.addColorStop(0,cum>=0?'rgba(16,185,129,.3)':'rgba(239,68,68,.3)');
+  gradient.addColorStop(1,'rgba(0,0,0,0)');
+  chart=new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets:[{label:'Cumulative PnL ($)',data,borderColor:cum>=0?'#10b981':'#ef4444',backgroundColor:gradient,fill:true,tension:.3,pointRadius:4,pointBackgroundColor:cum>=0?'#10b981':'#ef4444',borderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#64748b',font:{size:11}},grid:{color:'#1e293b'}},y:{ticks:{color:'#64748b',font:{size:11},callback:v=>'$'+v},grid:{color:'#1e293b'}}}}
+  });
+}
+
+// Countdown
+setInterval(()=>{timer--;if(timer<=0){timer=30;refresh()}$('countdown').textContent=timer+'s'},1000);
+refresh();
+</script>
+</body>
+</html>
