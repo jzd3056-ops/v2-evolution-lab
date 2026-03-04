@@ -250,3 +250,16 @@
 - All milestones achieved ✅ | Gen-0 survived Day 3 deadline 🎊
 - Observation: Stop-loss exit at bottom of a reversal → missed rally. Could benefit from re-entry logic after stop-loss (e.g., wait for pullback then re-enter trend direction)
 - Status: healthy, flat, waiting for next signal
+| 2026-03-04T11:38:58.817Z | OPEN_SHORT | $70978.015 | 0.007045 | - | ema_cross: EMA9 crossed below EMA21 | cash: $9999.77 |
+
+## 2026-03-04 12:00 UTC — Cron Check #25
+- pm2 gen0-sim: online, 2D uptime, 0 restarts ✅
+- BTC spot: $71,138 (Kraken) | SHORT 0.007045 BTC @ $70,978 (entry at 11:38 UTC)
+- Unrealized PnL: ~-$1.13 | Realized PnL: +$10.28 | Cash: $9,999.77 | Equity: ~$9,998.64
+- 21 closed trades (10W, 11L) — Win rate: 47.6% (but profitable due to higher avg win)
+- EMA9: 71,161 < EMA21: 71,202 — SHORT signal still valid
+- RSI: 49.1 (neutral) — no reversal pressure yet
+- Consecutive losses: 1 | Learning loop: not triggered
+- All milestones achieved ✅ | Gen-0 survived Day 3 deadline 🎊
+- Note: Big -$15.19 stop-loss on previous SHORT eroded gains. Total PnL dropped from +$25 to +$10. Position sizing discipline (R1) held though — loss was capped.
+- Status: healthy, holding SHORT, sim-trader autonomous
