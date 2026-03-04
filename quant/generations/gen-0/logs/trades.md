@@ -234,3 +234,19 @@
 - Milestones: Hour 4 ✅ | Day 1 (5 trades) ✅ | Day 3 (+returns): +$20.72 realized ✅ 🎉
 - All milestones achieved. Day 3 deadline passed — Gen-0 survives! 🎊
 - Status: healthy, holding LONG, sim-trader autonomous
+| 2026-03-04T06:43:58.703Z | CLOSE_LONG | $68556.755 | 0.007379 | 4.76 | signal_reversal | cash: $10015.96 |
+| 2026-03-04T06:43:58.703Z | OPEN_SHORT | $68556.755 | 0.007305 | - | rsi_revert: RSI(70.5) rose above 70 | cash: $10015.46 |
+| 2026-03-04T08:48:58.736Z | CLOSE_SHORT | $70566.03 | 0.007305 | -15.19 | stop_loss | cash: $10000.27 |
+
+## 2026-03-04 10:00 UTC — Cron Check #24
+- pm2 gen0-sim: online, 46h uptime, 0 restarts ✅
+- BTC spot: $71,579 (Kraken) | Position: FLAT (since 08:48 UTC stop_loss)
+- Cash: $10,000.27 | Total PnL: +$10.28 | 20 closed trades (10W, 10L) — Win rate: 50%
+- Last trade: CLOSE_SHORT @ $70,566 (stop_loss, -$15.19 — biggest single loss)
+- BTC rallied ~$1,000 since stop_loss — missed the move while flat
+- RSI: 72-86 (overbought), EMA9 > EMA21 (bullish) — no fresh crossover to trigger entry
+- Bot is correctly waiting for next signal crossover to enter
+- Consecutive losses: 1 | widenedEntry: true (>2h since last signal)
+- All milestones achieved ✅ | Gen-0 survived Day 3 deadline 🎊
+- Observation: Stop-loss exit at bottom of a reversal → missed rally. Could benefit from re-entry logic after stop-loss (e.g., wait for pullback then re-enter trend direction)
+- Status: healthy, flat, waiting for next signal
