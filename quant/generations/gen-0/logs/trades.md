@@ -263,3 +263,22 @@
 - All milestones achieved ✅ | Gen-0 survived Day 3 deadline 🎊
 - Note: Big -$15.19 stop-loss on previous SHORT eroded gains. Total PnL dropped from +$25 to +$10. Position sizing discipline (R1) held though — loss was capped.
 - Status: healthy, holding SHORT, sim-trader autonomous
+| 2026-03-04T13:03:58.733Z | CLOSE_SHORT | $71283.755 | 0.007045 | -2.66 | signal_reversal | cash: $9997.11 |
+| 2026-03-04T13:03:58.736Z | OPEN_LONG | $71283.755 | 0.007012 | - | ema_cross: EMA9 crossed above EMA21 | cash: $9996.61 |
+| 2026-03-04T14:33:58.738Z | CLOSE_LONG | $72273 | 0.007012 | 6.43 | signal_reversal | cash: $10003.04 |
+| 2026-03-04T14:33:58.738Z | OPEN_SHORT | $72273 | 0.006920 | - | rsi_revert: RSI(74.1) rose above 70 | cash: $10002.54 |
+
+## 2026-03-04 16:00 UTC — Cron Check #27
+- pm2 gen0-sim: online, 2D uptime, 0 restarts ✅
+- BTC spot: $73,445 (Kraken) | SHORT 0.006920 BTC @ $72,273 (entry at 14:33 UTC)
+- Unrealized PnL: ~-$8.11 | Realized PnL: +$14.05 | Cash: $10,002.54 | Equity: ~$9,994.43
+- 23 closed trades (12W, 11L) — Win rate: 52.2%
+- BTC rallied from $72,273 to $73,445 — SHORT underwater
+- RSI was 74.1 at entry (overbought), but BTC continues rallying — trend stronger than expected
+- Position size: ~$500 (5% of capital) — R1 compliant ✅
+- Consecutive losses: 0 (last trade was +$6.43 win)
+- Stop-loss should trigger around $74,686 (~-$15 cap) if rally continues
+- All milestones achieved ✅ | Gen-0 survived Day 3 deadline 🎊
+- **Concern**: BTC in strong uptrend ($66K→$73K in 2 days). RSI mean-reversion SHORT against trend is risky. Previous -$15.19 stop-loss was same pattern (SHORT in uptrend).
+- **Pattern**: 2 of 3 biggest losses were RSI overbought SHORTs in uptrend markets. Gene pool suggestion: add trend filter to suppress counter-trend RSI signals.
+- Status: holding SHORT, monitoring for stop-loss or signal reversal
