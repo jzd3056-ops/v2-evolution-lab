@@ -1,9 +1,9 @@
 {
-  "cash": 10002.542263989064,
+  "cash": 9991.434878250915,
   "position": {
-    "qty": 0.006920317695480934,
+    "qty": 0.006772564234874952,
     "side": "SHORT",
-    "entryPrice": 72273
+    "entryPrice": 73767.735
   },
   "trades": [
     {
@@ -454,15 +454,35 @@
       "fee": "0.50",
       "reason": "rsi_revert: RSI(74.1) rose above 70",
       "cash": "10002.54"
+    },
+    {
+      "time": "2026-03-04T18:53:58.762Z",
+      "action": "CLOSE_SHORT",
+      "price": 73732.115,
+      "qty": "0.006920",
+      "pnl": "-10.61",
+      "fee": "0.51",
+      "reason": "stop_loss",
+      "cash": "9991.93",
+      "totalPnL": "3.45"
+    },
+    {
+      "time": "2026-03-04T19:08:58.759Z",
+      "action": "OPEN_SHORT",
+      "price": 73767.735,
+      "qty": "0.006773",
+      "fee": "0.50",
+      "reason": "rsi_revert: RSI(65.9) rose above 65",
+      "cash": "9991.43"
     }
   ],
-  "dailyPnL": 3.7739962590555147,
+  "dailyPnL": -6.833792755345918,
   "dailyStart": 1772622838611,
-  "consecutiveLosses": 0,
+  "consecutiveLosses": 1,
   "pauseUntil": 0,
-  "lastSignalTime": 1772634838738,
-  "totalTrades": 23,
-  "totalPnL": 14.054061770761272,
+  "lastSignalTime": 1772651338759,
+  "totalTrades": 24,
+  "totalPnL": 3.446272756359839,
   "priceHistory": [],
   "widenedEntry": false
 }

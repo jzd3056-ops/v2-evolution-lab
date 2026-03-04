@@ -282,3 +282,16 @@
 - **Concern**: BTC in strong uptrend ($66K→$73K in 2 days). RSI mean-reversion SHORT against trend is risky. Previous -$15.19 stop-loss was same pattern (SHORT in uptrend).
 - **Pattern**: 2 of 3 biggest losses were RSI overbought SHORTs in uptrend markets. Gene pool suggestion: add trend filter to suppress counter-trend RSI signals.
 - Status: holding SHORT, monitoring for stop-loss or signal reversal
+| 2026-03-04T18:53:58.762Z | CLOSE_SHORT | $73732.115 | 0.006920 | -10.61 | stop_loss | cash: $9991.93 |
+| 2026-03-04T19:08:58.759Z | OPEN_SHORT | $73767.735 | 0.006773 | - | rsi_revert: RSI(65.9) rose above 65 | cash: $9991.43 |
+
+## 2026-03-04 20:00 UTC — Cron Check #29
+- pm2 gen0-sim: online, 2D uptime, 0 restarts ✅
+- BTC spot: $73,702 (Kraken) | SHORT 0.006773 BTC @ $73,767.74 (entry at 19:08 UTC)
+- Unrealized PnL: ~+$0.44 | Realized PnL: +$3.45 | Cash: $9,991.43 | Equity: ~$9,991.87
+- 24 closed trades | Today: -$6.83 (two stop-losses on counter-trend SHORTs)
+- Consecutive losses: 1 | Learning loop: not triggered
+- All milestones achieved ✅ | Gen-0 survived Day 3 deadline 🎊
+- **Observation**: 3rd RSI overbought SHORT today. Previous two hit stop-loss (-$15.19, -$10.61). This entry ($73,768) barely in profit. BTC in strong 2-day uptrend ($66K→$73.7K). Counter-trend RSI SHORTs are the primary PnL drag.
+- **Gene pool recommendation**: New rule candidate — "Suppress RSI mean-reversion SHORTs when price is >5% above 24h SMA (strong uptrend). Confidence: start at 60%." Two deaths support this pattern.
+- Status: holding SHORT, slim margin, sim-trader autonomous
