@@ -324,3 +324,23 @@
 - **Cumulative**: +$7.81 realized on $10K capital (+0.078%) over ~60h runtime
 - **Watch**: EMA bearish cross may trigger CLOSE_LONG + OPEN_SHORT soon
 - Status: holding LONG, sim-trader autonomous
+| 2026-03-05T01:03:58.847Z | CLOSE_LONG | $72728.815 | 0.006842 | -2.70 | signal_reversal | cash: $9992.60 |
+| 2026-03-05T01:03:58.847Z | OPEN_SHORT | $72728.815 | 0.006870 | - | ema_cross: EMA9 crossed below EMA21 | cash: $9992.10 |
+| 2026-03-05T01:08:58.806Z | CLOSE_SHORT | $72958.485 | 0.006870 | -2.08 | signal_reversal | cash: $9990.02 |
+| 2026-03-05T01:08:58.806Z | OPEN_LONG | $72958.485 | 0.006846 | - | ema_cross: EMA9 crossed above EMA21 | cash: $9989.52 |
+| 2026-03-05T01:43:58.825Z | CLOSE_LONG | $72652.255 | 0.006846 | -2.59 | signal_reversal | cash: $9986.93 |
+| 2026-03-05T01:43:58.825Z | OPEN_SHORT | $72652.255 | 0.006873 | - | ema_cross: EMA9 crossed below EMA21 | cash: $9986.43 |
+
+## 2026-03-05 02:00 UTC — Cron Check #32
+- pm2 gen0-sim: online, 2D uptime, 0 restarts ✅
+- BTC spot: $72,558 (Kraken) | SHORT 0.006873 BTC @ $72,652.26 (entry at 01:43 UTC)
+- Unrealized PnL: ~+$0.65 | Realized PnL: +$0.44 | Cash: $9,986.43 | Equity: ~$9,987.08
+- 28 closed trades (14W, 14L) — Win rate: 50%
+- 3 consecutive losses triggered R8 pause (01:43-01:58 UTC) — just resumed
+- Last hour was choppy: 3 whipsaw trades in 40 min (-$2.70, -$2.08, -$2.59 = -$7.37)
+- EMA9 < EMA21, RSI ~42 — bearish lean, SHORT position aligned with short-term trend
+- **Cumulative**: +$0.44 realized on $10K capital (+0.004%) over ~62h runtime
+- **Note**: PnL eroded from +$7.81 to +$0.44 in last 6h due to whipsaws around $72.5K-$73K range
+- **Learning observation**: Whipsaw pattern recurring — EMA crossover in tight ranges generates rapid signal flips. Previous learning entry (check #22) recommended ATR volatility filter. This pattern is now validated across 2 different price ranges ($66K-$68K and $72K-$73K).
+- All milestones achieved ✅ | Gen-0 alive, Day 3+
+- Status: holding SHORT, sim-trader autonomous, pause lifted

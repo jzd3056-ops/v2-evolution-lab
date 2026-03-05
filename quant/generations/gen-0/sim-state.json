@@ -1,9 +1,9 @@
 {
-  "cash": 9995.299123387917,
+  "cash": 9986.430484074757,
   "position": {
-    "qty": 0.00684172197842924,
-    "side": "LONG",
-    "entryPrice": 73050.315
+    "qty": 0.00687310382214997,
+    "side": "SHORT",
+    "entryPrice": 72652.255
   },
   "trades": [
     {
@@ -494,15 +494,75 @@
       "fee": "0.50",
       "reason": "rsi_revert: RSI(34.6) dropped below 35",
       "cash": "9995.30"
+    },
+    {
+      "time": "2026-03-05T01:03:58.847Z",
+      "action": "CLOSE_LONG",
+      "price": 72728.815,
+      "qty": "0.006842",
+      "pnl": "-2.70",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9992.60",
+      "totalPnL": "5.11"
+    },
+    {
+      "time": "2026-03-05T01:03:58.847Z",
+      "action": "OPEN_SHORT",
+      "price": 72728.815,
+      "qty": "0.006870",
+      "fee": "0.50",
+      "reason": "ema_cross: EMA9 crossed below EMA21",
+      "cash": "9992.10"
+    },
+    {
+      "time": "2026-03-05T01:08:58.806Z",
+      "action": "CLOSE_SHORT",
+      "price": 72958.485,
+      "qty": "0.006870",
+      "pnl": "-2.08",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9990.02",
+      "totalPnL": "3.03"
+    },
+    {
+      "time": "2026-03-05T01:08:58.806Z",
+      "action": "OPEN_LONG",
+      "price": 72958.485,
+      "qty": "0.006846",
+      "fee": "0.50",
+      "reason": "ema_cross: EMA9 crossed above EMA21",
+      "cash": "9989.52"
+    },
+    {
+      "time": "2026-03-05T01:43:58.825Z",
+      "action": "CLOSE_LONG",
+      "price": 72652.255,
+      "qty": "0.006846",
+      "pnl": "-2.59",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9986.93",
+      "totalPnL": "0.44"
+    },
+    {
+      "time": "2026-03-05T01:43:58.825Z",
+      "action": "OPEN_SHORT",
+      "price": 72652.255,
+      "qty": "0.006873",
+      "fee": "0.50",
+      "reason": "ema_cross: EMA9 crossed below EMA21",
+      "cash": "9986.43"
     }
   ],
-  "dailyPnL": -2.469757672677291,
+  "dailyPnL": -9.839919233246047,
   "dailyStart": 1772622838611,
-  "consecutiveLosses": 0,
-  "pauseUntil": 0,
-  "lastSignalTime": 1772658538873,
-  "totalTrades": 25,
-  "totalPnL": 7.810307839028466,
+  "consecutiveLosses": 3,
+  "pauseUntil": 1772675938824,
+  "lastSignalTime": 1772675038825,
+  "totalTrades": 28,
+  "totalPnL": 0.4401462784597121,
   "priceHistory": [],
-  "widenedEntry": true
+  "widenedEntry": false
 }
