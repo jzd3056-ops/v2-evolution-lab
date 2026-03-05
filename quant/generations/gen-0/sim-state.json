@@ -564,5 +564,5 @@
   "totalTrades": 28,
   "totalPnL": 0.4401462784597121,
   "priceHistory": [],
-  "widenedEntry": false
+  "widenedEntry": true
 }
