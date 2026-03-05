@@ -310,3 +310,17 @@
 - **Cumulative**: +$7.81 realized on $10K capital (+0.078%) over ~58h runtime
 - **Key insight from today**: RSI overbought SHORTs in uptrend hit stop-loss twice (-$15.19, -$10.61), but RSI oversold LONGs in uptrend were profitable. Trend alignment matters.
 - Status: holding LONG, sim-trader autonomous
+
+## 2026-03-05 00:00 UTC — Cron Check #31
+- pm2 gen0-sim: online, 2D uptime, 0 restarts ✅
+- BTC spot: $72,700 (Kraken) | LONG 0.006842 BTC @ $73,050.32 (entry at 21:08 UTC)
+- Unrealized PnL: ~-$2.40 | Realized PnL: +$7.81 | Cash: $9,995.30 | Equity: ~$9,992.90
+- 25 closed trades (13W, 12L) — Win rate: 52%
+- EMA9: 72,704 < EMA21: 72,821 — bearish cross forming, RSI ~43
+- BTC pulled back from $73.4K high, now ranging $72.4K-$72.8K
+- LONG slightly underwater (-$350 from entry), but no stop-loss or signal reversal yet
+- Consecutive losses: 0 | Learning loop: not triggered
+- All milestones achieved ✅ | Day 3+ — Gen-0 alive and autonomous
+- **Cumulative**: +$7.81 realized on $10K capital (+0.078%) over ~60h runtime
+- **Watch**: EMA bearish cross may trigger CLOSE_LONG + OPEN_SHORT soon
+- Status: holding LONG, sim-trader autonomous
