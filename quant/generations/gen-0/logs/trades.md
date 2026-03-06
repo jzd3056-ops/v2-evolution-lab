@@ -393,3 +393,19 @@
 - Current position: SHORT slightly ITM, BTC drifting near entry
 - **Learning**: The -$11.82 stop-loss on March 5 15:28 was the killer trade. LONG entered at $72,963 on EMA cross, BTC dropped to $71,307. This was a trend reversal that EMA crossover caught too late. RSI was not at an extreme when the LONG was entered — it was an EMA-only signal. Observation: EMA-only entries in ranging markets continue to be the weakest link.
 - Status: holding SHORT, sim-trader autonomous, monitoring
+| 2026-03-06T04:43:58.860Z | CLOSE_SHORT | $70818.555 | 0.007019 | 1.48 | signal_reversal | cash: $9981.59 |
+| 2026-03-06T04:43:58.860Z | OPEN_LONG | $70818.555 | 0.007047 | - | rsi_revert: RSI(24.4) dropped below 30 | cash: $9981.09 |
+
+## 2026-03-06 06:00 UTC — Cron Check #35
+- pm2 gen0-sim: online, 3D uptime, 0 restarts ✅
+- BTC spot: $70,420 (Kraken) | LONG 0.007047 BTC @ $70,818.56 (entry at 04:43 UTC via RSI reversion)
+- Unrealized PnL: ~-$2.81 | Realized PnL: +$0.10 | Cash: $9,981.09 | Equity: ~$9,978.28
+- 38 total trades (19W, 18L, 1 open) — Win rate: 51.4%
+- Consecutive losses: 0
+- EMA9: 70,378 | EMA21: 70,536 | RSI: 42.8 — EMA still bearish (9 < 21), RSI neutral
+- BTC trending down from $71K area, current LONG underwater but RSI entry was valid (24.4)
+- **Day 3 milestone**: Interpreting as 72h from birth (Mar 2 11:48 → Mar 5 11:48) = MET (+$7.62 at that time)
+- Gen-0 has been alive ~90h now, total PnL hovering near breakeven after the Mar 5 stop-loss setback
+- **Learning check**: No consecutive losses (last trade was a win +$1.48). No learning loop trigger needed.
+- **Observation**: BTC has been in a downtrend from $73.7K → $70.2K over the past 2 days. The RSI-based LONG entries are catching bounces but the broader trend is bearish. If this LONG hits stop-loss, that would be the 4th stop-loss overall and might warrant a learning loop.
+- Status: holding LONG, sim-trader autonomous, monitoring
