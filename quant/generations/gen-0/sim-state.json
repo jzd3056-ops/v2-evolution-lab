@@ -1,9 +1,9 @@
 {
-  "cash": 9986.430484074757,
+  "cash": 9980.11518044854,
   "position": {
-    "qty": 0.00687310382214997,
+    "qty": 0.00701870962506089,
     "side": "SHORT",
-    "entryPrice": 72652.255
+    "entryPrice": 71100.065
   },
   "trades": [
     {
@@ -554,15 +554,195 @@
       "fee": "0.50",
       "reason": "ema_cross: EMA9 crossed below EMA21",
       "cash": "9986.43"
+    },
+    {
+      "time": "2026-03-05T05:58:58.783Z",
+      "action": "CLOSE_SHORT",
+      "price": 72307.735,
+      "qty": "0.006873",
+      "pnl": "1.87",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9988.30",
+      "totalPnL": "2.31"
+    },
+    {
+      "time": "2026-03-05T05:58:58.783Z",
+      "action": "OPEN_LONG",
+      "price": 72307.735,
+      "qty": "0.006907",
+      "fee": "0.50",
+      "reason": "rsi_revert: RSI(32.6) dropped below 35",
+      "cash": "9987.80"
+    },
+    {
+      "time": "2026-03-05T07:38:58.795Z",
+      "action": "CLOSE_LONG",
+      "price": 72229.205,
+      "qty": "0.006907",
+      "pnl": "-1.04",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9986.76",
+      "totalPnL": "1.27"
+    },
+    {
+      "time": "2026-03-05T07:38:58.795Z",
+      "action": "OPEN_SHORT",
+      "price": 72229.205,
+      "qty": "0.006913",
+      "fee": "0.50",
+      "reason": "ema_cross: EMA9 crossed below EMA21",
+      "cash": "9986.26"
+    },
+    {
+      "time": "2026-03-05T07:53:58.851Z",
+      "action": "CLOSE_SHORT",
+      "price": 71819.655,
+      "qty": "0.006913",
+      "pnl": "2.33",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9988.60",
+      "totalPnL": "3.60"
+    },
+    {
+      "time": "2026-03-05T07:53:58.851Z",
+      "action": "OPEN_LONG",
+      "price": 71819.655,
+      "qty": "0.006954",
+      "fee": "0.50",
+      "reason": "rsi_revert: RSI(25.9) dropped below 30",
+      "cash": "9988.10"
+    },
+    {
+      "time": "2026-03-05T10:13:58.820Z",
+      "action": "CLOSE_LONG",
+      "price": 72751.135,
+      "qty": "0.006954",
+      "pnl": "5.97",
+      "fee": "0.51",
+      "reason": "signal_reversal",
+      "cash": "9994.07",
+      "totalPnL": "9.58"
+    },
+    {
+      "time": "2026-03-05T10:13:58.820Z",
+      "action": "OPEN_SHORT",
+      "price": 72751.135,
+      "qty": "0.006869",
+      "fee": "0.50",
+      "reason": "rsi_revert: RSI(65.9) rose above 65",
+      "cash": "9993.57"
+    },
+    {
+      "time": "2026-03-05T12:58:58.861Z",
+      "action": "CLOSE_SHORT",
+      "price": 72962.615,
+      "qty": "0.006869",
+      "pnl": "-1.95",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9991.61",
+      "totalPnL": "7.62"
+    },
+    {
+      "time": "2026-03-05T12:58:58.861Z",
+      "action": "OPEN_LONG",
+      "price": 72962.615,
+      "qty": "0.006847",
+      "fee": "0.50",
+      "reason": "ema_cross: EMA9 crossed above EMA21",
+      "cash": "9991.12"
+    },
+    {
+      "time": "2026-03-05T15:28:58.920Z",
+      "action": "CLOSE_LONG",
+      "price": 71306.995,
+      "qty": "0.006847",
+      "pnl": "-11.82",
+      "fee": "0.49",
+      "reason": "stop_loss",
+      "cash": "9979.29",
+      "totalPnL": "-4.20"
+    },
+    {
+      "time": "2026-03-05T16:08:58.984Z",
+      "action": "OPEN_LONG",
+      "price": 70999.995,
+      "qty": "0.007028",
+      "fee": "0.50",
+      "reason": "rsi_revert: RSI(32.1) dropped below 35",
+      "cash": "9978.79"
+    },
+    {
+      "time": "2026-03-05T21:28:58.868Z",
+      "action": "CLOSE_LONG",
+      "price": 71516.615,
+      "qty": "0.007028",
+      "pnl": "3.13",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9981.92",
+      "totalPnL": "-1.07"
+    },
+    {
+      "time": "2026-03-05T21:28:58.871Z",
+      "action": "OPEN_SHORT",
+      "price": 71516.615,
+      "qty": "0.006979",
+      "fee": "0.50",
+      "reason": "rsi_revert: RSI(65.6) rose above 65",
+      "cash": "9981.42"
+    },
+    {
+      "time": "2026-03-05T22:48:58.829Z",
+      "action": "CLOSE_SHORT",
+      "price": 71258.77,
+      "qty": "0.006979",
+      "pnl": "1.30",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9982.72",
+      "totalPnL": "0.23"
+    },
+    {
+      "time": "2026-03-05T22:48:58.829Z",
+      "action": "OPEN_LONG",
+      "price": 71258.77,
+      "qty": "0.007005",
+      "fee": "0.50",
+      "reason": "ema_cross: EMA9 crossed above EMA21",
+      "cash": "9982.22"
+    },
+    {
+      "time": "2026-03-06T03:43:58.917Z",
+      "action": "CLOSE_LONG",
+      "price": 71100.065,
+      "qty": "0.007005",
+      "pnl": "-1.61",
+      "fee": "0.50",
+      "reason": "signal_reversal",
+      "cash": "9980.61",
+      "totalPnL": "-1.38"
+    },
+    {
+      "time": "2026-03-06T03:43:58.917Z",
+      "action": "OPEN_SHORT",
+      "price": 71100.065,
+      "qty": "0.007019",
+      "fee": "0.50",
+      "reason": "ema_cross: EMA9 crossed below EMA21",
+      "cash": "9980.12"
     }
   ],
-  "dailyPnL": -9.839919233246047,
-  "dailyStart": 1772622838611,
-  "consecutiveLosses": 3,
+  "dailyPnL": -10.95765237395568,
+  "dailyStart": 1772709238684,
+  "consecutiveLosses": 1,
   "pauseUntil": 1772675938824,
-  "lastSignalTime": 1772675038825,
-  "totalTrades": 28,
-  "totalPnL": 0.4401462784597121,
+  "lastSignalTime": 1772768638917,
+  "totalTrades": 37,
+  "totalPnL": -1.3814628584900894,
   "priceHistory": [],
-  "widenedEntry": true
+  "widenedEntry": false
 }

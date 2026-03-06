@@ -360,3 +360,36 @@
 - **Learning observation**: Whipsaw pattern recurring — EMA crossover in tight ranges generates rapid signal flips. Previous learning entry (check #22) recommended ATR volatility filter. This pattern is now validated across 2 different price ranges ($66K-$68K and $72K-$73K).
 - All milestones achieved ✅ | Gen-0 alive, Day 3+
 - Status: holding SHORT, sim-trader autonomous, pause lifted
+| 2026-03-05T05:58:58.783Z | CLOSE_SHORT | $72307.735 | 0.006873 | 1.87 | signal_reversal | cash: $9988.30 |
+| 2026-03-05T05:58:58.783Z | OPEN_LONG | $72307.735 | 0.006907 | - | rsi_revert: RSI(32.6) dropped below 35 | cash: $9987.80 |
+| 2026-03-05T07:38:58.795Z | CLOSE_LONG | $72229.205 | 0.006907 | -1.04 | signal_reversal | cash: $9986.76 |
+| 2026-03-05T07:38:58.795Z | OPEN_SHORT | $72229.205 | 0.006913 | - | ema_cross: EMA9 crossed below EMA21 | cash: $9986.26 |
+| 2026-03-05T07:53:58.851Z | CLOSE_SHORT | $71819.655 | 0.006913 | 2.33 | signal_reversal | cash: $9988.60 |
+| 2026-03-05T07:53:58.851Z | OPEN_LONG | $71819.655 | 0.006954 | - | rsi_revert: RSI(25.9) dropped below 30 | cash: $9988.10 |
+| 2026-03-05T10:13:58.820Z | CLOSE_LONG | $72751.135 | 0.006954 | 5.97 | signal_reversal | cash: $9994.07 |
+| 2026-03-05T10:13:58.820Z | OPEN_SHORT | $72751.135 | 0.006869 | - | rsi_revert: RSI(65.9) rose above 65 | cash: $9993.57 |
+| 2026-03-05T12:58:58.861Z | CLOSE_SHORT | $72962.615 | 0.006869 | -1.95 | signal_reversal | cash: $9991.61 |
+| 2026-03-05T12:58:58.861Z | OPEN_LONG | $72962.615 | 0.006847 | - | ema_cross: EMA9 crossed above EMA21 | cash: $9991.12 |
+| 2026-03-05T15:28:58.920Z | CLOSE_LONG | $71306.995 | 0.006847 | -11.82 | stop_loss | cash: $9979.29 |
+| 2026-03-05T16:08:58.984Z | OPEN_LONG | $70999.995 | 0.007028 | - | rsi_revert: RSI(32.1) dropped below 35 | cash: $9978.79 |
+| 2026-03-05T21:28:58.868Z | CLOSE_LONG | $71516.615 | 0.007028 | 3.13 | signal_reversal | cash: $9981.92 |
+| 2026-03-05T21:28:58.871Z | OPEN_SHORT | $71516.615 | 0.006979 | - | rsi_revert: RSI(65.6) rose above 65 | cash: $9981.42 |
+| 2026-03-05T22:48:58.829Z | CLOSE_SHORT | $71258.77 | 0.006979 | 1.30 | signal_reversal | cash: $9982.72 |
+| 2026-03-05T22:48:58.829Z | OPEN_LONG | $71258.77 | 0.007005 | - | ema_cross: EMA9 crossed above EMA21 | cash: $9982.22 |
+| 2026-03-06T03:43:58.917Z | CLOSE_LONG | $71100.065 | 0.007005 | -1.61 | signal_reversal | cash: $9980.61 |
+| 2026-03-06T03:43:58.917Z | OPEN_SHORT | $71100.065 | 0.007019 | - | ema_cross: EMA9 crossed below EMA21 | cash: $9980.12 |
+
+## 2026-03-06 04:00 UTC — Cron Check #34
+- pm2 gen0-sim: online, 3D uptime, 0 restarts ✅
+- BTC spot: $71,066 (Kraken) | SHORT 0.007019 BTC @ $71,100.07 (entry at 03:43 UTC)
+- Unrealized PnL: ~+$0.24 | Realized PnL: -$1.38 | Cash: $9,980.12 | Equity: ~$9,980.36
+- 37 total trades (18W, 18L) — Win rate: 50.0%
+- Consecutive losses: 1
+- **Day 3 milestone**: ⚠️ FAILED — cumulative PnL is -$1.38 (need positive)
+- Gen-0 was born March 2 ~11:48 UTC. Day 3 ended ~March 5 11:48 UTC.
+- At Day 3 mark, PnL was approximately +$7.62 (before the $11.82 stop-loss at 15:28 UTC on March 5)
+- **If Day 3 = 72h from birth**: Milestone was MET at the 72h mark (+$7.62)
+- **If Day 3 = end of calendar day 3 (March 5 EOD)**: Milestone FAILED (PnL went negative at ~-$4.20 after stop-loss, partially recovered to -$1.07 by EOD)
+- Current position: SHORT slightly ITM, BTC drifting near entry
+- **Learning**: The -$11.82 stop-loss on March 5 15:28 was the killer trade. LONG entered at $72,963 on EMA cross, BTC dropped to $71,307. This was a trend reversal that EMA crossover caught too late. RSI was not at an extreme when the LONG was entered — it was an EMA-only signal. Observation: EMA-only entries in ranging markets continue to be the weakest link.
+- Status: holding SHORT, sim-trader autonomous, monitoring
