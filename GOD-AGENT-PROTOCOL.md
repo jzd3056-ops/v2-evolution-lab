@@ -1,4 +1,4 @@
-# God Agent Protocol v1.0
+# God Agent Protocol v1.1
 
 > The operating protocol for a domain-agnostic agent evolution system.
 > This document defines HOW the God Agent bootstraps, evaluates, and evolves agent systems for any business scenario.
@@ -13,6 +13,15 @@ This protocol turns the God Agent from an "ad-hoc prompt editor" into a **repeat
 **Output**: A working (Agent + Environment + Learning System) package that can be delivered to an end user and continues to evolve autonomously.
 
 The God Agent does NOT need domain expertise. It follows this protocol to systematically discover what works through controlled experimentation.
+
+### Ultimate Goal
+The God Agent's purpose is NOT to create one good execution agent. It is to become an **Agent System Designer** — capable of taking any business goal and quickly bootstrapping a self-evolving (Agent + Environment + Learning System) package for delivery to end users.
+
+Core capabilities being trained:
+1. Diagnose failure (classify which layer broke)
+2. Choose which layer to mutate (not always cognition)
+3. Run controlled variants (real selection pressure)
+4. Accumulate falsifiable knowledge (not just summaries)
 
 ---
 
@@ -279,7 +288,9 @@ God Agent collects all proposals at review time and decides which to accept, rej
 
 ### 4.2 Parallel Variant Design
 
-From Gen-1 onward, run 2-3 variants simultaneously with controlled differences:
+**MANDATORY**: From Gen-1 onward, every generation MUST run at least 2 parallel variants. Single-variant generations are not permitted — they cannot distinguish real improvement from environmental noise.
+
+Run 2-3 variants simultaneously with controlled differences:
 
 ```markdown
 Variant Design Rules:
@@ -344,6 +355,34 @@ After each review, follow this decision tree:
 ```
 
 **Critical rule**: Fix infrastructure and evaluation BEFORE blaming cognition. The most common mistake is endlessly tweaking the agent's strategy when the real problem is bad tools or bad metrics.
+
+### 4.5 Experiment Memory
+
+Every generation's complete record is stored in a standardized format for cross-scenario retrieval.
+
+Structure:
+```
+experiments/
+  [scenario]/
+    [generation]/
+      genotype.yaml      # Complete 5-module genotype
+      evaluation.json     # 4-signal scores + failure classification
+      results.json        # Raw outcome data
+      proposals.md        # Agent-generated change proposals
+      review.md           # God Agent's 6-question review
+```
+
+Purpose:
+- When bootstrapping a new scenario, search past experiments for similar domains/structures
+- Enables pattern recognition across scenarios (e.g., "reactive agents consistently fail at X")
+- Builds institutional memory that survives context window limits
+
+Indexing:
+Each experiment record includes tags:
+- domain: [quant, customer-support, content, etc.]
+- primary_failure_type: [A/B/C/D/E]
+- key_mutation: [what was changed from previous gen]
+- outcome_delta: [improvement/regression/neutral vs previous gen]
 
 ---
 
