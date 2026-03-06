@@ -461,6 +461,14 @@ The God Agent itself should evolve. After each scenario:
 - Minor version: Adjusted heuristics, added checklists
 - Every change must have evidence from a real experiment
 
+### Long-term Roadmap (recorded, not active)
+
+These capabilities are recognized as valuable but deferred until the current protocol is validated:
+
+- **Random Mutation Engine**: Introduce controlled random parameter variation (20-30% of variants) to escape local optima. Trigger: when directed mutations show diminishing returns over 5+ generations.
+- **Architecture Evolution**: Allow mutations at the architecture level (reactive → planner → multi-agent). Trigger: when single-agent performance plateaus across multiple scenarios.
+- **Cross-scenario Transfer Learning**: Use Experiment Memory to pre-seed genotypes for new scenarios based on similar past experiments.
+
 ---
 
 ## 7. Applying This Protocol: Quant Lane Gen-1
@@ -495,7 +503,20 @@ Already done by Gen-0. Key findings:
 
 ---
 
-*Protocol version: 1.0*
+*Protocol version: 1.1*
 *Created: 2026-03-06*
 *Author: Romi (God Agent)*
 *Status: Draft — to be validated by first full-cycle application*
+
+---
+## Changelog
+
+### v1.1 (2026-03-06)
+- Population Engine: parallel variants upgraded from recommendation to MANDATORY
+- Added Experiment Memory (Section 4.5) for cross-scenario knowledge retention
+- Clarified Ultimate Goal in Section 0
+- Added Long-term Roadmap (random mutation, architecture evolution, cross-scenario transfer)
+- Based on external review feedback (ChatGPT evaluation)
+
+### v1.0 (2026-03-06)
+- Initial protocol release
